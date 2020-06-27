@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Shopall Categories
+    </title>
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="icon" type="image/png" href="../../assets/logo.png">
+    <link rel="mask-icon" color="#343b43" href="safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" media="screen" href="../../assets/css/vendor.min.css">
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="../../assets/css/theme.min.css">
+    <link rel="stylesheet" href="../../assets/css/unify-globals.css">
+    <!-- Google Tag Manager-->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PVV9F7F');
+
+    </script>
+    <!-- Modernizr-->
+    <script src="../../assets/js/modernizr.min.js"></script>
+  </head>
+  <!-- Body-->
+  <body>
+    <!-- Google Tag Manager (noscript)-->
+    <noscript>
+      <iframe src="//www.googletagmanager.com/ns.html?id=GTM-PVV9F7F" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+    </noscript>
+    <!-- Off-Canvas Menu-->
+      <div class="offcanvas-container is-triggered offcanvas-container-reverse" id="mobile-menu"><span class="offcanvas-close"><i class="fe-icon-x"></i></span>
+        <div class="px-4 pb-4">
+          <h6>Menu</h6>
+          <div class="d-flex justify-content-between pt-2">
+            <a class="btn btn-warning btn-sm btn-block" href="/user/signup"><i class="fe-icon-user"></i>&nbsp;Get Started</a>
+          </div>
+        </div>
+        <div class="offcanvas-scrollable-area border-top" style="height:calc(100% - 235px); top: 144px;">
+          <!-- Mobile Menu-->
+          <div class="accordion mobile-menu" id="accordion-menu">
+            <div class="card">
+              <div class="card-header">
+                <a class="mobile-menu-link" href="/">Homepage</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="mobile-menu-link" href="/shops">Registered Shops</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="mobile-menu-link" href="/categories">Shopping Categories</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="mobile-menu-link" href="/shopall/top_deals">Top Deals</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="mobile-menu-link" href="/shopall/services">Our Services</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="mobile-menu-link" href="/shopall/careers">Shopall Careers</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="mobile-menu-link" href="/about">About Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="offcanvas-footer px-4 pt-3 pb-2 text-center"><a class="social-btn sb-style-3 sb-twitter" href="#"><i class="socicon-twitter"></i></a><a class="social-btn sb-style-3 sb-facebook" href="#"><i class="socicon-facebook"></i></a><a class="social-btn sb-style-3 sb-pinterest" href="#"><i class="socicon-pinterest"></i></a><a class="social-btn sb-style-3 sb-instagram" href="#"><i class="socicon-instagram"></i></a></div>
+      </div>
+    <!-- Navbar: Default-->
+    <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+    <header class="navbar-wrapper navbar-sticky">
+      <div class="d-table-cell align-middle pr-md-3">
+        <a class="navbar-brand mr-1" href="/">
+          <img class="w-50" src="../../assets/logo.png" alt="Shopall">
+        </a>
+      </div>
+      <div class="d-table-cell w-100 align-middle pl-md-3">
+        <div class="navbar justify-content-end justify-content-lg-between">
+          <!-- Search-->
+          <form class="search-box" method="post" action="/search-results">
+            <input type="text" id="site-search" placeholder="Type here to search" name="search">
+            <span class="search-close"><i class="fe-icon-x"></i></span>
+          </form>
+          <!-- Main Menu-->
+          <ul class="navbar-nav d-none d-lg-block">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shops">Our Shops</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/categories">Shopping Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shopall/top_deals">Top Deals</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shopall/services">Our Services</a>
+            </li>
+          </ul>
+          <div>
+            <ul class="navbar-buttons d-inline-block align-middle mr-lg-2">
+              <li class="d-block d-lg-none">
+                <a href="#mobile-menu" data-toggle="offcanvas">
+                  <i class="fe-icon-menu"></i>
+                </a>
+              </li>
+              <li>
+                <a href="/user/profile" data-toggle="offcanvas">
+                  <i class="fe-icon-user"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" data-toggle="search">
+                  <i class="fe-icon-search"></i>
+                </a>
+              </li>
+              <li>
+                <a href="/cart" data-toggle="offcanvas">
+                  <i class="fe-icon-shopping-cart"></i>
+                </a>
+                <span class="badge badge-danger">{{session.cart.totalQty}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Page Title-->
+    <div class="page-title d-flex" aria-label="Page title" style="background-image: url(../../assets/img/pages/help-hero-bg.jpg);height:200px; margin-bottom: 0">
+      <div class="container text-left align-self-center">
+        <h1 class="h3 page-title-heading text-white">Our Categories</h1>
+      </div>
+    </div>
+    <!-- Page Content-->
+    <div class="container pb-4 mb-1">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- Categories Grid-->
+          <div class="row pt-3">
+            <!-- Category-->
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/women_clothing">
+                <div class="product-category-card-thumb">
+                  <div class="main-img">
+                    <img src="../../assets/img/shop/categories/product-9.jpg" style="object-fit:cover" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/product/product-27.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/product/24.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+
+                  <h5 class="product-category-card-title">Women's Clothing</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/men_clothing">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/product/product-32.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/product/4.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/product/product-20-02.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+
+                  <h5 class="product-category-card-title">Men's Clothing</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/boys_clothing">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/now/21.jpeg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/now/29.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/now/9.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Boys' Clothing</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/girls_clothing">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img class="rounded" src="../../assets/img/shop/categories/now/01.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/now/27.jpeg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/now/02.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Girls' Clothing</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/baby_products">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/now/6.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img class="rounded" src="../../assets/img/shop/categories/now/12.jpg" alt="Shop Category"/>
+                    <img class="rounded" src="../../assets/img/shop/categories/now/31.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Baby Products</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/computers_and_accessories">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/01.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/02.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/03.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+
+                  <h5 class="product-category-card-title">Computers &amp; Accessories</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/food_and_groceries">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/gro.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/groceries.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/grapes.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+
+                  <h5 class="product-category-card-title">Food & Groceries</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/tv_audio_video">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/07.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/08.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/09.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+
+                  <h5 class="product-category-card-title">TV, Video &amp; Audio</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/smartphones_and_tablets">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/04.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/05.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/06.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+
+                  <h5 class="product-category-card-title">Smartphones &amp; Tablets</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/cameras_photo_video">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/10.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/11.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/12.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Cameras, Photo &amp; Video</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/headphones">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/13.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/14.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/15.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Headphones</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/electronics">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/16.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/20.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/18.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Electronics</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/video_games">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/22.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/23.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/24.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+
+                  <h5 class="product-category-card-title">Video Games</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/toys_and_games">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/40.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/41.jpg" alt="Shop Category"/>
+                    <img class="rounded" src="../../assets/img/shop/categories/52.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Toys & Games</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/beauty_and_personal_care">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/59.jpeg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img class="rounded" src="../../assets/img/shop/categories/now/5.jpg" alt="Shop Category"/>
+                    <img class="rounded" src="../../assets/img/shop/categories/now/05.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Beauty & Personal Care</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/books">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/3.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/4.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/6.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Books</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/stationary">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/51.png" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/55.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/33.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Stationary</h5>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/furniture_and_homewares">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/49.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/9.png" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/10.png" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Furniture & Homewares</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/industrial_and_scientific">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img class="rounded" src="../../assets/img/shop/categories/now/16.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img class="rounded" src="../../assets/img/shop/categories/now/15.jpg" alt="Shop Category"/>
+                    <img class="rounded" src="../../assets/img/shop/categories/now/26.jpeg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Industrial & Scientific</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/alcohol">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/43.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/57.jpg" alt="Shop Category"/>
+                    <img class="w-100 g-height-130" style="object-fit:cover" src="../../assets/img/shop/categories/now/04.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Alcohol</h5>
+                </div>
+              </a>
+            </div>
+
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/health_and_household">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img class="rounded" src="../../assets/img/shop/categories/37.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img class="rounded" src="../../assets/img/shop/categories/54.jpg" alt="Shop Category"/>
+                    <img class="rounded" src="../../assets/img/shop/categories/48.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Health & Household</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/tools_and_garden">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/44.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img class="rounded" src="../../assets/img/shop/categories/29.png" alt="Shop Category"/>
+                    <img class="rounded" src="../../assets/img/shop/categories/42.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Tools & Garden</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/sports_and_outdoor">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/35.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/34.jpg" alt="Shop Category"/>
+                    <img class="rounded" src="../../assets/img/shop/categories/38.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Sports & Outdoor</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/media_house">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/53.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/39.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/50.png" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Media House</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/farming">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img class="rounded" src="../../assets/img/shop/categories/60.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img class="rounded" src="../../assets/img/shop/categories/58.jpg" alt="Shop Category"/>
+                    <img class="rounded" src="../../assets/img/shop/categories/56.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Farming</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/software">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img class="rounded" src="../../assets/img/shop/categories/now/30.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img class="rounded" src="../../assets/img/shop/categories/now/7.jpg" alt="Shop Category"/>
+                    <img class="rounded" src="../../assets/img/shop/categories/now/8.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Software</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/bags_and_luggage">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/2.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/36.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/now/20.png" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Bags & Luggage</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/shoes">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/47.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/product/23.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/product/45.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Shoes</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/jewellery">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/31.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/27.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/now/18.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Jewellery</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/arts_and_crafts">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img class="rounded" src="../../assets/img/shop/categories/now/2.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img class="rounded" src="../../assets/img/shop/categories/now/28.jpg" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/now/23.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Arts & Crafts</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/services">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/now/3.png" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img class="rounded" src="../../assets/img/shop/categories/now/4.png" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/now/10.png" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Services</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/home_and_kitchen">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/now/17.jpg" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/now/11.webp" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/h.jpg" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Home & Kitchen</h5>
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-4">
+              <a class="product-category-card" href="/categories/other">
+                <div class="product-category-card-thumb">
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/now/25.png" alt="Shop Category"/>
+                  </div>
+                  <div class="thumblist">
+                    <img src="../../assets/img/shop/categories/now/o3.png" alt="Shop Category"/>
+                    <img src="../../assets/img/shop/categories/now/o4.png" alt="Shop Category"/>
+                  </div>
+                </div>
+                <div class="product-category-card-body">
+                  <h5 class="product-category-card-title">Other</h5>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer-->
+    <footer class="bg-dark pt-5">
+      <!-- First Row-->
+      <div class="container pt-2">
+        <div class="row">
+          <!-- Shop Departments-->
+          <div class="col-lg-9">
+            <div class="widget widget-light-skin mb-0">
+              <h4 class="widget-title">Shop departments</h4>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="widget widget-categories widget-light-skin">
+                  <ul>
+                    <li><a href="/categories/women_clothing">Women's Clothing</a></li>
+                    <li><a href="/categories/men_clothing">Men's Clothing</a></li>
+                    <li><a href="/categories/boys_clothing">Boys' Clothing</a></li>
+                    <li><a href="/categories/girls_clothing">Girls' Clothing</a></li>
+                    <li><a href="/categories/computers_and_accessories">Computers & Accessories</a></li>
+                    <li><a href="/categories/food_and_groceries">Food & Groceries</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="widget widget-categories widget-light-skin">
+                  <ul>
+                    <li><a href="/categories/tv_audio_video">TV, Video & Audio</a></li>
+                    <li><a href="/categories/smartphones_and_tablets">Smartphones & Tablets</a></li>
+                    <li><a href="/categories/cameras_photo_video">Cameras, Photo & Video</a></li>
+                    <li><a href="/categories/headphones">Headphones</a></li>
+                    <li><a href="/categories/electronics">Electronics</a></li>
+                    <li><a href="/categories/video_games">Video Games</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="widget widget-categories widget-light-skin">
+                  <ul>
+                    <li><a href="/categories/toys_and_games">Toys & Games</a></li>
+                    <li><a href="/categories/beauty_and_personal_care">Beauty & Personal Care</a></li>
+                    <li><a href="/categories/books">Books</a></li>
+                    <li><a href="/categories/furniture_and_homewares">Furniture & Homewares</a></li>
+                    <li><a href="/categories/sports_and_outdoor">Sports & Outdoor</a></li>
+                    <li><a href="/categories">View More...</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Account Links-->
+          <div class="col-lg-3 col-sm-6">
+            <div class="widget widget-categories widget-light-skin">
+              <h4 class="widget-title">Account &amp; Useful Info</h4>
+              <ul>
+                <li><a href="/user/profile">My Account</a></li>
+                <li><a href="/blogs">Our Blog</a></li>
+                <li><a href="/shopall/careers">Shopall Careers</a></li>
+                <li><a href="/shopall/advertising">Advertising</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/terms_and_conditions">Terms of Use</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Subscription-->
+      <div class="pt-5" style="background-color: #30363d;">
+        <div class="container">
+          <h6 class="text-white text-center">Subscribe to receive our Newsletter</h6>
+          <div class="row justify-content-center pb-5">
+            <div class="col-xl-6 col-lg-7 col-md-9">
+              <form action="/form/subscription" method="post" >
+                <div class="input-group">
+                  <input class="form-control form-control-light-skin" type="email" name="email" placeholder="Email address">
+                  <div class="input-group-append">
+                    <button class="btn btn-warning" type="submit">Subscribe</button>
+                  </div>
+                </div>
+                <small class="form-text text-white opacity-50 pt-1 text-center">Enter email to receive a newsletter with new posts daily.</small>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                  <input type="text" name="subscription" tabindex="-1">
+                </div>
+              </form>
+            </div>
+          </div>
+          <hr class="hr-light">
+          <div class="d-md-flex justify-content-between align-items-center py-4 text-center text-md-left">
+            <div class="order-2">
+              <a class="footer-link text-white" href="/about">About</a>
+              <a class="footer-link text-white ml-3" href="/shopall/services">Our Services</a>
+              <a class="footer-link text-white ml-3" href="/terms_and_conditions">Privacy Policy</a>
+            </div>
+            <p class="m-0 text-sm text-white order-1">
+              <span class='opacity-60'>&copy <script> document.write(new Date().getFullYear()) </script> SHOPALL</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="fe-icon-chevron-up"></i></a>
+    <!-- Backdrop-->
+    <div class="site-backdrop"></div>
+    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+    <script src="../../assets/js/vendor.min.js"></script>
+    <script src="../../assets/js/theme.min.js"></script>
+  </body>
+</html>

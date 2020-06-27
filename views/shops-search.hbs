@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Shopall Online Stores
+    </title>
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="icon" type="image/png" href="../../assets/logo.png">
+    <link rel="mask-icon" color="#343b43" href="safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
+    <link rel="stylesheet" media="screen" href="../../assets/css/vendor.min.css">
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="../../assets/css/theme.min.css">
+    <link rel="stylesheet" href="../../assets/css/unify-globals.css">
+    <!-- Google Tag Manager-->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PVV9F7F');
+
+    </script>
+    <!-- Modernizr-->
+    <script src="../../assets/js/modernizr.min.js"></script>
+  </head>
+  <!-- Body-->
+  <body>
+    <!-- Google Tag Manager (noscript)-->
+    <noscript>
+      <iframe src="//www.googletagmanager.com/ns.html?id=GTM-PVV9F7F" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+    </noscript>
+    <!-- Off-Canvas Menu-->
+      <div class="offcanvas-container is-triggered offcanvas-container-reverse" id="mobile-menu"><span class="offcanvas-close"><i class="fe-icon-x"></i></span>
+        <div class="px-4 pb-4">
+          <h6>Menu</h6>
+          <div class="d-flex justify-content-between pt-2">
+            <a class="btn btn-warning btn-sm btn-block" href="/user/signup"><i class="fe-icon-user"></i>&nbsp;Get Started</a>
+          </div>
+        </div>
+        <div class="offcanvas-scrollable-area border-top" style="height:calc(100% - 235px); top: 144px;">
+          <!-- Mobile Menu-->
+          <div class="accordion mobile-menu" id="accordion-menu">
+            <div class="card">
+              <div class="card-header">
+                <a class="mobile-menu-link" href="/">Homepage</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="mobile-menu-link" href="/shops">Registered Shops</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="mobile-menu-link" href="/categories">Shopping Categories</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="mobile-menu-link" href="/shopall/top_deals">Top Deals</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="mobile-menu-link" href="/shopall/services">Our Services</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="mobile-menu-link" href="/shopall/careers">Shopall Careers</a>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <a class="mobile-menu-link" href="/about">About Us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="offcanvas-footer px-4 pt-3 pb-2 text-center"><a class="social-btn sb-style-3 sb-twitter" href="#"><i class="socicon-twitter"></i></a><a class="social-btn sb-style-3 sb-facebook" href="#"><i class="socicon-facebook"></i></a><a class="social-btn sb-style-3 sb-pinterest" href="#"><i class="socicon-pinterest"></i></a><a class="social-btn sb-style-3 sb-instagram" href="#"><i class="socicon-instagram"></i></a></div>
+      </div>
+    <!-- Navbar: Default-->
+    <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+    <header class="navbar-wrapper navbar-sticky">
+      <div class="d-table-cell align-middle pr-md-3">
+        <a class="navbar-brand mr-1" href="/">
+          <img class="w-50" src="../../assets/logo.png" alt="Shopall">
+        </a>
+      </div>
+      <div class="d-table-cell w-100 align-middle pl-md-3">
+        <div class="navbar justify-content-end justify-content-lg-between">
+          <!-- Search-->
+          <form class="search-box" method="post" action="/search-results">
+            <input type="text" id="site-search" placeholder="Type here to search" name="search">
+            <span class="search-close"><i class="fe-icon-x"></i></span>
+          </form>
+          <!-- Main Menu-->
+          <ul class="navbar-nav d-none d-lg-block">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/shops">Our Shops</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/categories">Shopping Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shopall/top_deals">Top Deals</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shopall/services">Our Services</a>
+            </li>
+          </ul>
+          <div>
+            <ul class="navbar-buttons d-inline-block align-middle mr-lg-2">
+              <li class="d-block d-lg-none">
+                <a href="#mobile-menu" data-toggle="offcanvas">
+                  <i class="fe-icon-menu"></i>
+                </a>
+              </li>
+              <li>
+                <a href="/user/profile" data-toggle="offcanvas">
+                  <i class="fe-icon-user"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#" data-toggle="search">
+                  <i class="fe-icon-search"></i>
+                </a>
+              </li>
+              <li>
+                <a href="/cart" data-toggle="offcanvas">
+                  <i class="fe-icon-shopping-cart"></i>
+                </a>
+                <span class="badge badge-danger">{{session.cart.totalQty}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Page Title-->
+    <div class="page-title d-flex" aria-label="Page title" style="background-image: url(../../assets/img/pages/help-hero-bg.jpg);height:400px;">
+      <div class="container text-left align-self-center">
+        <div class="row justify-content-center py-5">
+          <div class="col-lg-7 col-md-8 col-sm-11">
+            <div class="wizard">
+              <div class="wizard-body">
+                <h1 class="h3 text-center pb-2">Search Shops</h1>
+                <form class="input-group mb-2" method="post" action="/search-shops">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text bg-primary text-white"><i class="fe-icon-search"></i></div>
+                  </div>
+                  <input class="form-control" type="text" placeholder="Type here to search..." name="searchShops">
+                </form>
+                <p class="text-center m-0 text-sm">Search results for "{{search}}"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page Content-->
+    <div class="container pb-4 mb-1">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- Categories Grid-->
+          <div class="row pt-3">
+            {{# if shops}}
+            {{# each shops}}
+            {{# if this.is_shop}}
+              {{# if this.active}}
+              <div class="col-lg-3 col-md-4 col-xs-6 col-sm-6 mb-3">
+                <div class="widget widget-featured-products">
+                  <a class="featured-product" href="/shop/{{this._id}}">
+                    <div class="featured-product-thumb">
+                      <img class="w-100 g-height-50" style="object-fit:cover" src="../../uploads/{{this.profile_image}}" alt="Shop Image"/>
+                    </div>
+                    <div class="featured-product-info">
+                      <h5 class="featured-product-title">{{# if this.shopname}}{{this.shopname}}{{else}}{{this.fullname}}{{/if}}</h5>
+                      <span class="featured-product-price">
+                        {{this.shopType}}
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              {{/if}}
+              {{/if}}
+            {{/each}}
+            {{else}}
+            <h3 class="text-center">Search Found 0</h3>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer-->
+    <footer class="bg-dark pt-5">
+      <!-- First Row-->
+      <div class="container pt-2">
+        <div class="row">
+          <!-- Shop Departments-->
+          <div class="col-lg-9">
+            <div class="widget widget-light-skin mb-0">
+              <h4 class="widget-title">Shop departments</h4>
+            </div>
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="widget widget-categories widget-light-skin">
+                  <ul>
+                    <li><a href="/categories/women_clothing">Women's Clothing</a></li>
+                    <li><a href="/categories/men_clothing">Men's Clothing</a></li>
+                    <li><a href="/categories/boys_clothing">Boys' Clothing</a></li>
+                    <li><a href="/categories/girls_clothing">Girls' Clothing</a></li>
+                    <li><a href="/categories/computers_and_accessories">Computers & Accessories</a></li>
+                    <li><a href="/categories/food_and_groceries">Food & Groceries</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="widget widget-categories widget-light-skin">
+                  <ul>
+                    <li><a href="/categories/tv_audio_video">TV, Video & Audio</a></li>
+                    <li><a href="/categories/smartphones_and_tablets">Smartphones & Tablets</a></li>
+                    <li><a href="/categories/cameras_photo_video">Cameras, Photo & Video</a></li>
+                    <li><a href="/categories/headphones">Headphones</a></li>
+                    <li><a href="/categories/electronics">Electronics</a></li>
+                    <li><a href="/categories/video_games">Video Games</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="widget widget-categories widget-light-skin">
+                  <ul>
+                    <li><a href="/categories/toys_and_games">Toys & Games</a></li>
+                    <li><a href="/categories/beauty_and_personal_care">Beauty & Personal Care</a></li>
+                    <li><a href="/categories/books">Books</a></li>
+                    <li><a href="/categories/furniture_and_homewares">Furniture & Homewares</a></li>
+                    <li><a href="/categories/sports_and_outdoor">Sports & Outdoor</a></li>
+                    <li><a href="/categories">View More...</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Account Links-->
+          <div class="col-lg-3 col-sm-6">
+            <div class="widget widget-categories widget-light-skin">
+              <h4 class="widget-title">Account &amp; Useful Info</h4>
+              <ul>
+                <li><a href="/user/profile">My Account</a></li>
+                <li><a href="/blogs">Our Blog</a></li>
+                <li><a href="/shopall/careers">Shopall Careers</a></li>
+                <li><a href="/shopall/advertising">Advertising</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/terms_and_conditions">Terms of Use</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Subscription-->
+      <div class="pt-5" style="background-color: #30363d;">
+        <div class="container">
+          <h6 class="text-white text-center">Subscribe to receive our Newsletter</h6>
+          <div class="row justify-content-center pb-5">
+            <div class="col-xl-6 col-lg-7 col-md-9">
+              <form action="/form/subscription" method="post" >
+                <div class="input-group">
+                  <input class="form-control form-control-light-skin" type="email" name="email" placeholder="Email address">
+                  <div class="input-group-append">
+                    <button class="btn btn-warning" type="submit">Subscribe</button>
+                  </div>
+                </div>
+                <small class="form-text text-white opacity-50 pt-1 text-center">Enter email to receive a newsletter with new posts daily.</small>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                  <input type="text" name="subscription" tabindex="-1">
+                </div>
+              </form>
+            </div>
+          </div>
+          <hr class="hr-light">
+          <div class="d-md-flex justify-content-between align-items-center py-4 text-center text-md-left">
+            <div class="order-2">
+              <a class="footer-link text-white" href="/about">About</a>
+              <a class="footer-link text-white ml-3" href="/shopall/services">Our Services</a>
+              <a class="footer-link text-white ml-3" href="/terms_and_conditions">Privacy Policy</a>
+            </div>
+            <p class="m-0 text-sm text-white order-1">
+              <span class='opacity-60'>&copy <script> document.write(new Date().getFullYear()) </script> SHOPALL</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Back To Top Button--><a class="scroll-to-top-btn" href="#"><i class="fe-icon-chevron-up"></i></a>
+    <!-- Backdrop-->
+    <div class="site-backdrop"></div>
+    <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
+    <script src="../../assets/js/vendor.min.js"></script>
+    <script src="../../assets/js/theme.min.js"></script>
+  </body>
+</html>
