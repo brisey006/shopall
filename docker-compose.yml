@@ -10,9 +10,10 @@ services:
       - store:/usr/src/app/public/uploads
       - node_modules:/usr/src/app/node_modules
     networks:
-      - net
+      net:
+        ipv4_address: ${IP_PREFIX}.2
     ports: 
-      - '81:5000'
+      - '5000'
     environment: 
       - DB_PATH=shopalldb
   shopalldb:
@@ -21,12 +22,16 @@ services:
     volumes: 
       - db:/data/db
     networks: 
-      - net
+      net:
+        ipv4_address: ${IP_PREFIX}.3
     ports:
       - '27017'
 networks: 
-  net:
-    driver: bridge
+    net:
+      ipam:
+        driver: default
+        config:
+            - subnet: ${IP_PREFIX}.0/16
 volumes: 
   db:
   store:

@@ -1,6 +1,8 @@
-FROM node:14
+FROM node:12
 
 WORKDIR /usr/src/app
+
+RUN npm cache clean --force
 
 COPY package*.json ./
 
