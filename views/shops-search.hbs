@@ -180,7 +180,7 @@
                 <div class="widget widget-featured-products">
                   <a class="featured-product" href="/shop/{{this._id}}">
                     <div class="featured-product-thumb">
-                      <img class="w-100 g-height-50" style="object-fit:cover" src="../../uploads/{{this.profile_image}}" alt="Shop Image"/>
+                      <img class="w-100 g-height-50" style="object-fit:cover" {{# if this.profile_image}} src="../../uploads/{{this.profile_image}}" {{else}} src="../../assets/shop.jpg" {{/if}} alt="Shop Image"/>
                     </div>
                     <div class="featured-product-info">
                       <h5 class="featured-product-title">{{# if this.shopname}}{{this.shopname}}{{else}}{{this.fullname}}{{/if}}</h5>

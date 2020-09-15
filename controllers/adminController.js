@@ -7,13 +7,13 @@ const Social = require('../models/socials');
 const Subscription = require('../models/subs');
 const Service = require('../models/service');
 const Project = require('../models/project');
-const Order = require('../models/order');
 const Review = require('../models/review');
 const Blog = require('../models/blog');
 const Career = require('../models/career');
 const Password = require('../models/password');
 const About = require('../models/about');
 const Team = require('../models/team');
+const Order = require('../models/order');
 
 module.exports = {
   getAdminSuper: async (req, res, next) => {
@@ -37,6 +37,7 @@ module.exports = {
       const user = await User.findById(userId);
 
       res.render('admin-passwords', {
+        user: user,
         users: users.reverse()
       })
     } catch (err) {
@@ -51,7 +52,24 @@ getAdmin: async (req, res, next) => {
     const user = await User.findById(userId);
 
     res.render('admin-users', {
+      user: user,
       users: users.reverse()
+    })
+  } catch (err) {
+    next(err)
+  }
+},
+
+getAdminOrders: async (req, res, next) => {
+  try {
+    const orders = await Order.find({});
+
+    const userId = req.session.passport.user;
+    const user = await User.findById(userId);
+
+    res.render('admin-orders', {
+      user: user,
+      orders: orders.reverse()
     })
   } catch (err) {
     next(err)
@@ -72,6 +90,7 @@ getAdminShops: async (req, res, next) => {
     }
 
     res.render('admin-shops', {
+      user: user,
       users: users.reverse(),
       shops: shops.length
     })

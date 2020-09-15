@@ -16,6 +16,48 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../../assets/css/theme.min.css">
     <link rel="stylesheet" href="../../assets/css/unify-globals.css">
+    <style media="screen">
+        @media screen and (max-width: 479px){
+          .hidden-small-screen{
+            display: none;
+          }
+        }
+
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : landscape) { .hidden-small-screen{
+          display: none;
+        }}
+
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : portrait) { 	.hidden-small-screen{
+            display: none;
+          }}
+
+        @media only screen
+          and (min-device-width: 768px)
+          and (max-device-width: 1024px)
+          and (min-width: 1006)
+          and (max-width: 899px)
+          and (min-width: 768px)
+          and (-webkit-min-device-pixel-ratio: 1) {
+            .hidden-large-screen{
+              display: none;
+            }
+          }
+
+          @media screen
+          and (min-device-width: 1200px)
+          and (max-device-width: 1600px)
+          and (-webkit-min-device-pixel-ratio: 1) {
+            .hidden-large-screen{
+              display: none;
+            }
+        }
+    </style>
     <!-- Google Tag Manager-->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -160,7 +202,7 @@
           <div class="col-lg-7 col-md-8 col-sm-11">
             <div class="wizard">
               <div class="wizard-body">
-                <h1 class="h4 text-center pb-2">Search {{category}}</h1>
+                <h1 class="h6 text-center pb-2">Search {{category}}</h1>
                 <form class="input-group mb-2" method="post" action="{{ref}}">
                   <div class="input-group-prepend">
                     <div class="input-group-text bg-primary text-white"><i class="fe-icon-search"></i></div>
@@ -194,7 +236,7 @@
           <div class="row">
             {{# each products}}
             <!-- Product-->
-            <div class="col-xl-2 col-md-3 col-sm-6 mb-30" >
+            <div class="col-xl-2 col-md-3 hidden-small-screen mb-30" >
               <div class="product-card mx-auto mb-3" style="padding-top:0">
                 {{# if this.stock}}
                   {{else}}
@@ -206,8 +248,7 @@
                   <img id="cat" class="w-100 g-height-200" src="../../uploads/{{this.product_image}}" alt="Product Thumbnail" style="object-fit: cover;" />
                 </a>
                 <div class="product-card-body">
-                  <a class="product-meta" href="shop-categories.html">{{this.catagory}}</a>
-                  <h5 class="product-title" style="font-size: 14px">
+                  <h5 class="product-title" style="font-size: 14px;text-overflow: ellipsis; overflow: hidden">
                     <a href="/product/{{this._id}}">
                       {{this.name}}
                     </a>
@@ -224,7 +265,48 @@
                 <div class="product-buttons-wrap">
                   <div class="product-buttons">
                     <div class="product-button">
-                      <a href="/add-to-wishlist/{{product._id}}" title="Add to Wishlist" >
+                      <a href="/add-to-wishlist/{{this._id}}" title="Add to Wishlist" >
+                        <i class="fe-icon-heart"></i>
+                      </a>
+                    </div>
+                    <div class="product-button">
+                      <a href="/product/{{this._id}}" title="View Product" >
+                        <i class="fe-icon-arrow-right"></i>
+                      </a>
+                    </div>
+                    <div class="product-button">
+                      <a href="/add-to-cart/{{this._id}}" title="Add to Cart">
+                        <i class="fe-icon-shopping-cart"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 hidden-large-screen mb-30" >
+              <div class="product-card mx-auto mb-3" style="padding-top:0">
+
+                <a class="product-thumb" href="/product/{{this._id}}">
+                  <div class="g-height-150">
+                    <img id="cat" class="w-100" src="../../uploads/{{this.product_image}}" alt="Product Thumbnail" style="object-fit:cover;height:100%;width:100%;" />
+                  </div>
+                </a>
+                <div class="product-card-body">
+                  <h5 style="font-size: 12px; height: 30px; overflow: hidden" class="product-title">
+                    <a href="/product/{{this._id}}">{{this.name}}</a>
+                  </h5>
+                  <span class="product-price">
+                    {{# if this.price_cut}}
+                      <del>{{this.currency}}{{this.price_cut}}</del>
+                    {{/if}}
+                    {{this.currency}}{{this.price}}
+                  </span>
+                </div>
+                <div class="product-buttons-wrap">
+                  <div class="product-buttons">
+                    <div class="product-button">
+                      <a href="/add-to-wishlist/{{this._id}}" title="Add to Wishlist" >
                         <i class="fe-icon-heart"></i>
                       </a>
                     </div>

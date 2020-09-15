@@ -5,6 +5,66 @@ const User = require('../models/user');
 const Order = require('../models/order');
 
 module.exports = {
+  getClothing: async (req, res, next) => {
+    try {
+      const product = await Product.find({});
+      const category = "Clothing";
+
+      var clothing = [];
+      for (var i = 0; i < product.length; i++) {
+        if (product[i].category == "Women's Clothing" || product[i].category == "Men's Clothing" || product[i].category == "Boys' Clothing" || product[i].category == "Girls' Clothing") {
+          clothing.push(product[i]);
+        }
+      }
+
+      var ref = "/categories/clothing";
+
+      res.render('single-category', {
+        products: clothing.reverse(),
+        category: category,
+        ref
+      })
+    } catch (err) {
+      next(err)
+    }
+  },
+
+  clothingSearch: async (req, res, next) => {
+    try {
+      const product = await Product.find({});
+      const category = "Clothing";
+      const search = req.body.searchProduct;
+
+      var clothing = [];
+      for (var i = 0; i < product.length; i++) {
+        if (product[i].category == "Women's Clothing" || product[i].category == "Men's Clothing" || product[i].category == "Boys' Clothing" || product[i].category == "Girls' Clothing") {
+          clothing.push(product[i]);
+        }
+      }
+
+      var productsFound = [];
+      for (var i = 0; i < clothing.length; i++) {
+        if (clothing[i].name.toLowerCase().includes(search.toLowerCase())) {
+          productsFound.push(clothing[i]);
+        }
+        if (clothing[i].category.toLowerCase().includes(search.toLowerCase())) {
+          productsFound.push(clothing[i]);
+        }
+        if (clothing[i].description.toLowerCase().includes(search.toLowerCase())) {
+          productsFound.push(clothing[i]);
+        }
+      }
+
+      res.render('single-category', {
+        products: productsFound.reverse(),
+        category: category,
+        search: search
+      })
+    } catch (err) {
+      next(err)
+    }
+  },
+
   getC1: async (req, res, next) => {
     try {
       const product = await Product.find({});

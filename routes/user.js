@@ -19,6 +19,13 @@ router.route("/profile-shop")
   .get(isLoggedIn,UserController.getProfileShop)
   .post()
 
+router.route("/shopall-ledger")
+  .get(isLoggedIn,UserController.getLedger)
+
+router.route("/shop-orders")
+  .get(isLoggedIn,UserController.getShopOrders)
+  .post()
+
 router.route("/profile-orders")
   .get(isLoggedIn,UserController.getProfileOrders)
   .post()

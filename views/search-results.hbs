@@ -209,7 +209,7 @@
             {{else}}
             <a class="d-table w-100 p-3 box-shadow mb-3 text-decoration-none" href="/shop/{{this._id}}">
               <div class="d-table-cell align-middle" style="width: 60px; height: 60px;">
-                <img style="object-fit: cover;height: 100%; width: 100%;" src="../../uploads/{{this.profile_image}}" alt="Shop Image"/>
+                <img style="object-fit: cover;height: 100%; width: 100%;" {{# if this.profile_image}} src="../../uploads/{{this.profile_image}}" {{else}} src="../../assets/shop.jpg" {{/if}} alt="Shop Image"/>
               </div>
               <div class="d-table-cell align-middle pl-3">
                 <h6 class="text-md font-weight-bold mb-1">{{# if this.shopname}}{{this.shopname}}{{else}}{{this.fullname}}{{/if}}</h6>

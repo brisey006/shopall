@@ -149,13 +149,7 @@
     <!-- Page Content-->
 
     <!-- Page Title-->
-    <div class="page-title d-flex" aria-label="Page title" style="background-image: url(../../assets/logo.png);">
-      <div class="container text-left align-self-center">
-        <div class="row justify-content-center py-5">
-
-        </div>
-      </div>
-    </div>
+    <div class="page-title d-flex" aria-label="Page title" style="background-image: url(../../assets/logo.png);height: 250px;"></div>
 
     <!-- Services-->
     <section class="container pt-3 pb-4 mb-5" data-offset-top="110" id="services">
@@ -194,47 +188,44 @@
       <hr class="mt-5">
     </section>
     <!-- Team-->
-    <section class="container pb-5">
-      <h2 class="h3 block-title text-center mb-4">Meet Our Team<small>People behind your great experience</small></h2>
-      <div class="row">
-        {{# each team}}
-        <!-- Team member-->
-        <div class="col-lg-3 col-sm-6">
-          <div class="team-card-style-1 mx-auto">
-            <div class="team-card-inner">
-              <div class="team-thumb">
-                <img src="../../uploads/{{this.image}}" alt="Team Member Picture"/>
+    <section class="bg-secondary pb-5">
+      <section class="container">
+        <h2 class="h3 block-title text-center mb-4">Meet Our Team<small>People behind your great experience</small></h2>
+        <div class="row">
+          {{# each team}}
+          <!-- Team member-->
+          <div class="col-lg-3 col-sm-6">
+            <div class="team-card-style-1 mx-auto">
+              <div class="team-card-inner">
+                <div class="team-thumb">
+                  <img src="../../uploads/{{this.image}}" style="object-fit:cover;height:100%;width:100%;" alt="Team Member Picture"/>
+                </div>
+                <div class="team-social-bar text-center">
+                  <a class="social-btn sb-style-4 sb-facebook" href="{{this.facebook}}"><i class="socicon-facebook"></i></a>
+                  <a class="social-btn sb-style-4 sb-instagram" href="{{this.instagram}}"><i class="socicon-instagram"></i></a>
+                  <a class="social-btn sb-style-4 sb-twitter" href="{{this.twitter}}"><i class="socicon-twitter"></i></a>
+                  <a class="social-btn sb-style-4 sb-linkedin" href="{{this.linkedin}}"><i class="socicon-linkedin"></i></a>
+                </div>
+                <a class="team-contact-link" href="tel:{{this.phone}}">
+                  <i class="fe-icon-phone"></i>&nbsp;{{this.phone}}
+                </a>
+                <a class="team-contact-link" href="mailto:{{this.email}}">
+                  <i class="fe-icon-mail"></i>&nbsp;{{this.email}}
+                </a>
               </div>
-              <div class="team-social-bar text-center">
-                <a class="social-btn sb-style-4 sb-facebook" href="{{this.facebook}}"><i class="socicon-facebook"></i></a>
-                <a class="social-btn sb-style-4 sb-instagram" href="{{this.instagram}}"><i class="socicon-instagram"></i></a>
-                <a class="social-btn sb-style-4 sb-twitter" href="{{this.twitter}}"><i class="socicon-twitter"></i></a>
-                <a class="social-btn sb-style-4 sb-linkedin" href="{{this.linkedin}}"><i class="socicon-linkedin"></i></a>
-              </div>
-              <a class="team-contact-link" href="tel:{{this.phone}}">
-                <i class="fe-icon-phone"></i>&nbsp;{{this.phone}}
-              </a>
-              <a class="team-contact-link" href="mailto:{{this.email}}">
-                <i class="fe-icon-mail"></i>&nbsp;{{this.email}}
-              </a>
+              <span class="team-position">{{this.title}}</span>
+              <h4 style="font-size:14px" class="team-name">{{this.name}}</h4>
             </div>
-            <span class="team-position">{{this.title}}</span>
-            <h4 class="team-name">{{this.name}}</h4>
           </div>
+          {{/each}}
         </div>
-        {{/each}}
-      </div>
+      </section>
     </section>
     <!-- Skills-->
-    <section class="bg-secondary container">
+    <section class="container">
       <div class="py-3 my-lg-3 px-2 px-lg-3">
           <h2 class="h3 block-title mb-4 text-center">Our Story</h2>
           <style media="screen">
-              #art-img img{
-                width: 100%;
-                object-fit: cover;
-              }
-
               #art-img iframe{
                 width: 100%;
                 height: 410px;
@@ -242,27 +233,20 @@
               }
 
               @media (max-width: 991.98px){
-                #art-img img{
-                  width: 100%;
-                  object-fit: cover;
-                  height: auto;
-                }
-
                 #art-img iframe{
                   width: 100%;
                   height: 200px;
                   object-fit: cover;
                 }
 
-                #yotu{
-                  width: 100%;
-                  object-fit: cover;
-                  height: auto;
-                }
               }
             </style>
-          <div class="story" id="art-img">
-            {{{story.description}}}
+          <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="story col-lg-8" id="art-img">
+              {{{story.description}}}
+            </div>
+            <div class="col-lg-2"></div>
           </div>
       </div>
     </section>

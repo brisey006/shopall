@@ -399,23 +399,6 @@ module.exports = {
     }
   },
 
-  addSub: async (req, res, next) => {
-    try {
-      const {email} = req.body;
-      const date = Date.now();
-      const created_at = new Date(date).toDateString();
-
-      const subscription = new Subscription({
-        email: email,
-        date: created_at
-      });
-
-      await subscription.save();
-      res.render('thanks');
-    } catch (error) {
-      next(error);
-    }
-  }
 
 
 }

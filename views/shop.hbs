@@ -21,6 +21,48 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../../assets/css/theme.min.css">
     <link rel="stylesheet" href="../../assets/css/unify-globals.css">
+    <style media="screen">
+        @media screen and (max-width: 479px){
+          .hidden-small-screen{
+            display: none;
+          }
+        }
+
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : landscape) { .hidden-small-screen{
+          display: none;
+        }}
+
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : portrait) { 	.hidden-small-screen{
+            display: none;
+          }}
+
+        @media only screen
+          and (min-device-width: 768px)
+          and (max-device-width: 1024px)
+          and (min-width: 1006)
+          and (max-width: 899px)
+          and (min-width: 768px)
+          and (-webkit-min-device-pixel-ratio: 1) {
+            .hidden-large-screen{
+              display: none;
+            }
+          }
+
+          @media screen
+          and (min-device-width: 1200px)
+          and (max-device-width: 1600px)
+          and (-webkit-min-device-pixel-ratio: 1) {
+            .hidden-large-screen{
+              display: none;
+            }
+        }
+    </style>
     <!-- Google Tag Manager-->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -178,7 +220,7 @@
                   </div>
                   <input class="form-control" name="search" type="text" placeholder="Type here to search...">
                 </form>
-                  <div class="widget pt-2 mt-3 text-center bg-light">
+                  <div class="widget pt-2 mt-3 text-center bg-light" style="margin-bottom: 0;">
                     {{# if shop.facebook}}
                     <a class="social-btn sb-style-6 sb-facebook sb-dark-skin" href="{{shop.facebook}}">
                       <i class="socicon-facebook"></i>
@@ -329,18 +371,62 @@
           <div class="row">
             {{# each products}}
             <!-- Product-->
-            <div class="col-xl-3 col-md-4 col-sm-6 mb-30" >
+            <div class="col-xl-3 col-md-4 hidden-small-screen mb-30" >
               <div class="product-card mx-auto mb-3" style="padding-top:0">
                 <a class="product-thumb" href="/product/{{this._id}}">
                   <img id="prod-img" class="w-100 g-height-250" src="../../uploads/{{this.product_image}}" alt="Product Thumbnail" style="object-fit: cover;" />
                 </a>
                 <div class="product-card-body">
-                  <h5 class="product-title">
+                  <h5 class="product-title" style="text-overflow: ellipsis;overflow:hidden;">
                     <a href="/product/{{this._id}}">
                       {{this.name}}
                     </a>
                   </h5>
                     <span class="product-price">
+                      {{#if this.price_cut }}
+                        <del>
+                          {{this.currency}}{{this.price_cut}}
+                        </del>
+                      {{/if}}
+                      {{this.currency}}{{this.price}}
+                    </span>
+                </div>
+                <div class="product-buttons-wrap">
+                  <div class="product-buttons">
+                    <div class="product-button">
+                      <a href="/add-to-wishlist/{{this._id}}" title="Add to Wishlist" >
+                        <i class="fe-icon-heart"></i>
+                      </a>
+                    </div>
+                    <div class="product-button">
+                      <a href="/product/{{this._id}}" title="View Product" >
+                        <i class="fe-icon-arrow-right"></i>
+                      </a>
+                    </div>
+                    <div class="product-button">
+                      <a href="/add-to-cart/{{this._id}}" title="Add to Cart">
+                        <i class="fe-icon-shopping-cart"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 hidden-large-screen mb-30" >
+              <div class="product-card mx-auto mb-3" style="padding-top:0">
+                <a class="product-thumb" href="/product/{{this._id}}">
+                  <div class="g-height-150">
+                    <img id="prod-img" class="w-100" src="../../uploads/{{this.product_image}}" alt="Product Thumbnail" style="object-fit: cover;height:100%;" />
+                  </div>
+                </a>
+                <div class="product-card-body">
+                  <h5 class="product-title" style="font-size: 11px;text-overflow: ellipsis;overflow:hidden;">
+                    <a href="/product/{{this._id}}" >
+                      {{this.name}}
+                    </a>
+                  </h5>
+                    <span class="product-price" style="font-size: 10px">
                       {{#if this.price_cut }}
                         <del>
                           {{this.currency}}{{this.price_cut}}

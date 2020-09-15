@@ -16,6 +16,48 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../../assets/css/theme.min.css">
     <link rel="stylesheet" href="../../assets/css/unify-globals.css">
+    <style media="screen">
+        @media screen and (max-width: 479px){
+          .hidden-small-screen{
+            display: none;
+          }
+        }
+
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : landscape) { .hidden-small-screen{
+          display: none;
+        }}
+
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : portrait) { 	.hidden-small-screen{
+            display: none;
+          }}
+
+        @media only screen
+          and (min-device-width: 768px)
+          and (max-device-width: 1024px)
+          and (min-width: 1006)
+          and (max-width: 899px)
+          and (min-width: 768px)
+          and (-webkit-min-device-pixel-ratio: 1) {
+            .hidden-large-screen{
+              display: none;
+            }
+          }
+
+          @media screen
+          and (min-device-width: 1200px)
+          and (max-device-width: 1600px)
+          and (-webkit-min-device-pixel-ratio: 1) {
+            .hidden-large-screen{
+              display: none;
+            }
+        }
+    </style>
     <!-- Google Tag Manager-->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -264,7 +306,176 @@
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0"></script>
 
     <!-- Page Content-->
-    <div class="container mb-2 mt-5">
+    <div class="mx-3 hidden-small-screen mb-2 mt-3">
+      <div class="row">
+        <!-- Product Gallery-->
+        <div class="col-xl-5 col-md-6 pb-5">
+          <div class="product-gallery">
+            {{# if product.stock}}
+            <span></span>
+            {{else}}
+            <span class="badge badge-danger text-md font-weight-normal">
+              Out of Stock
+            </span>
+            {{/if}}
+            <div class="product-carousel owl-carousel">
+              {{# each product.product_images}}
+                <a class="gallery-item" href="../../uploads/{{this}}" data-fancybox="gallery1" data-hash="{{this}}">
+                  <img class="w-100 g-height-500" style="object-fit:cover" src="../../uploads/{{this}}" alt="Product">
+                </a>
+              {{/each}}
+            </div>
+            <ul class="product-thumbnails">
+              {{# each product.product_images}}
+              <li class="">
+                <a href="#{{this}}">
+                  <img class="w-50 g-height-50" style="object-fit:cover" src="../../uploads/{{this}}" alt="Product">
+                </a>
+              </li>
+              {{/each}}
+
+              {{# if product.product_video}}
+              <li>
+                <a class="navi-link text-sm" href="{{product.product_video}}" data-fancybox data-width="960" data-height="640">
+                  <i class="fe-icon-video text-lg d-block mb-1"></i>
+                  Watch Video
+                </a>
+              </li>
+              {{/if}}
+            </ul>
+          </div>
+        </div>
+        <!-- Product Info-->
+        <div class="col-md-4 pb-5">
+          <div class="product-meta">
+            <i class="fe-icon-bookmark"></i>
+            <a href="{{ref}}">{{product.category}}</a><span class="d-none d-sm-inline mx-3 text-muted opacity-50">|</span>
+            {{# if reviews}}
+            <div class="d-inline align-baseline text-sm text-warning mr-1">
+              <div class="rating-stars">
+                {{# if a1}}
+                  <i style="font-size: 24px;" class="fe-icon-star active"></i>
+                  <i style="font-size: 22px;" class="fe-icon-star"></i>
+                  <i style="font-size: 20px;" class="fe-icon-star"></i>
+                  <i style="font-size: 18px;" class="fe-icon-star"></i>
+                  <i style="font-size: 16px;" class="fe-icon-star"></i>
+                {{/if}}
+                {{# if a2}}
+                  <i style="font-size: 24px;" class="fe-icon-star active"></i>
+                  <i style="font-size: 22px;" class="fe-icon-star active"></i>
+                  <i style="font-size: 20px;" class="fe-icon-star"></i>
+                  <i style="font-size: 18px;" class="fe-icon-star"></i>
+                  <i style="font-size: 16px;" class="fe-icon-star"></i>
+                {{/if}}
+                {{# if a3}}
+                  <i style="font-size: 24px;" class="fe-icon-star active"></i>
+                  <i style="font-size: 22px;" class="fe-icon-star active"></i>
+                  <i style="font-size: 20px;" class="fe-icon-star active"></i>
+                  <i style="font-size: 18px;" class="fe-icon-star"></i>
+                  <i style="font-size: 16px;" class="fe-icon-star"></i>
+                {{/if}}
+                {{# if a4}}
+                  <i style="font-size: 24px;" class="fe-icon-star active"></i>
+                  <i style="font-size: 22px;" class="fe-icon-star active"></i>
+                  <i style="font-size: 20px;" class="fe-icon-star active"></i>
+                  <i style="font-size: 18px;" class="fe-icon-star active"></i>
+                  <i style="font-size: 16px;" class="fe-icon-star"></i>
+                {{/if}}
+                {{# if a5}}
+                  <i style="font-size: 24px;" class="fe-icon-star active"></i>
+                  <i style="font-size: 22px;" class="fe-icon-star active"></i>
+                  <i style="font-size: 20px;" class="fe-icon-star active"></i>
+                  <i style="font-size: 18px;" class="fe-icon-star active"></i>
+                  <i style="font-size: 16px;" class="fe-icon-star active"></i>
+                {{/if}}
+                </div>
+              </div>
+              <a href='#product-reviews' class='scroll-to'>See Reviews</a>
+              {{else}}
+              <a href="#">No Reviews</a>
+            {{/if}}
+          </div>
+          <p class="font-weight-bold" style="font-size:20px">{{product.name}}</p>
+          <h3 class="h6 font-weight-light">
+            {{# if product.price_cut}}<del class="text-muted">{{product.currency}}{{product.price_cut}}</del>{{/if}}&nbsp;{{product.currency}}{{product.price}}
+          </h3>
+          <p class="text-muted">
+             <div style="overflow: hidden;height: 45px;">
+               {{product.description}}
+             </div> ...
+            <a href='#details-large' class='scroll-to'>More info</a>
+          </p>
+          <p class="font-weight-bold" style="font-size:16px">
+             Condition: <span class="badge badge-success">{{product.condition}}</span>
+          </p>
+          <div class="row align-items-end pb-4">
+            <div class="col-sm-6">
+              <div class="pt-4 hidden-sm-up"></div>
+              {{# if shop.active}}
+              <a href="/add-to-cart/{{product._id}}" class="btn btn-success btn-block m-0" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="fe-icon-check-circle" data-toast-title="Product" data-toast-message="successfuly added to cart!">
+                <i class="fe-icon-shopping-cart"></i>&nbsp; Add to Cart
+              </a>
+              {{else}}
+              <a href="#!" class="btn btn-success btn-block m-0" disabled>
+                <i class="fe-icon-shopping-cart"></i>&nbsp; Add to Cart
+              </a>
+              {{/if}}
+            </div>
+            <div class="col-sm-6">
+              <div class="pt-4 hidden-sm-up"></div>
+              <a href="/add-to-wishlist/{{product._id}}" class="btn btn-warning btn-block m-0" data-toast data-toast-type="info" data-toast-position="topRight" data-toast-icon="fe-icon-info" data-toast-title="Product" data-toast-message="successfuly added to your wishlist!">
+                <i class="fe-icon-heart"></i>&nbsp; Add to Wishlist
+              </a>
+            </div>
+          </div>
+          <hr class="mb-2">
+          <div class="d-flex flex-wrap justify-content-between align-items-center">
+            <div class="mt-2 mb-2">
+              <span class="text-muted d-inline-block align-middle mb-2">Share:&nbsp;&nbsp;</span>
+              <div class="d-inline-block">
+                <a class="social-btn sb-style-3 sb-facebook my-1 fb-xfbml-parse-ignore fb-share-button" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://shopall.co.zw/product/{{product._id}}" title="Facebook">
+                  <i class="socicon-facebook"></i>
+                </a>
+                <a class="social-btn sb-style-3 sb-twitter my-1" href="https://twitter.com/share?url=https://shopall.co.zw/product/{{product._id}}" target="_blank" title="Twitter">
+                  <i class="socicon-twitter"></i>
+                </a>
+                <a class="social-btn sb-style-3 sb-linkedin my-1" href="http://www.linkedin.com/shareArticle?mini=true&url=https://shopall.co.zw/product/{{product._id}}&title={{product.name}} | Price: {{product.currency}}{{product.price}}" target="_blank" title="Linkedin">
+                  <i class="socicon-linkedin"></i>
+                </a>
+                <a class="social-btn sb-style-3 sb-twitter my-1" href="https://api.whatsapp.com/send?text={{product.name}} | Price: {{product.currency}}{{product.price}} | Shop: {{# if shop.shopname}}{{shop.shopname}}{{else}}{{shop.fullname}}{{/if}} | buy on: https://shopall.co.zw/product/{{product._id}}" target="_blank" title="WhatsApp">
+                  <i class="socicon-whatsapp"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-md-12">
+          <p class="font-weight-bold">Shop Quick Info</p>
+          <div class="card">
+            <div class="card-header">
+              <p class="font-weight-bold text-uppercase"><a style="text-decoration:none" href="/shop/{{shop._id}}">{{# if shop.shopname}}{{shop.shopname}}{{else}}{{shop.fullname}}{{/if}}</a></p>
+            </div>
+            <div class="card-body" style="font-size:13px">
+              <p class="text-uppercase">Country: {{shop.country}}</p>
+              <p class="text-uppercase">City: {{shop.city}}</p>
+              <p class="text-uppercase">Type: {{shop.shopType}}</p>
+            </div>
+            <div class="card-footer">
+              <div class="d-inline-block">
+                <div class="featured-product-thumb">
+                  <a href="/shop/{{shop._id}}">
+                    <img class="w-100 g-height-200" style="object-fit:cover" src="../../uploads/{{shop.profile_image}}" alt="Shop Image"/>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Content-->
+    <div class="container hidden-large-screen mb-4 mt-1">
       <div class="row">
         <!-- Product Gallery-->
         <div class="col-xl-5 col-md-6 pb-5">
@@ -359,13 +570,13 @@
              <div style="overflow: hidden;height: 45px;">
                {{product.description}}
              </div> ...
-            <a href='#details' class='scroll-to'>More info</a>
+            <a href='#details-small' class='scroll-to'>More info</a>
           </p>
           <p class="font-weight-bold" style="font-size:16px">
              Condition: <span class="badge badge-success">{{product.condition}}</span>
           </p>
           <div class="row align-items-end pb-4">
-            <div class="col-sm-6">
+            <div class="col-6">
               <div class="pt-4 hidden-sm-up"></div>
               {{# if shop.active}}
               <a href="/add-to-cart/{{product._id}}" class="btn btn-success btn-block m-0" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="fe-icon-check-circle" data-toast-title="Product" data-toast-message="successfuly added to cart!">
@@ -377,7 +588,7 @@
               </a>
               {{/if}}
             </div>
-            <div class="col-sm-6">
+            <div class="col-6">
               <div class="pt-4 hidden-sm-up"></div>
               <a href="/add-to-wishlist/{{product._id}}" class="btn btn-warning btn-block m-0" data-toast data-toast-type="info" data-toast-position="topRight" data-toast-icon="fe-icon-info" data-toast-title="Product" data-toast-message="successfuly added to your wishlist!">
                 <i class="fe-icon-heart"></i>&nbsp; Add to Wishlist
@@ -409,9 +620,9 @@
           <p class="font-weight-bold">Shop Quick Info</p>
           <div class="card">
             <div class="card-header">
-              <p class="font-weight-bold text-uppercase"><a href="/shop/{{shop._id}}">{{# if shop.shopname}}{{shop.shopname}}{{else}}{{shop.fullname}}{{/if}}</a></p>
+              <p class="font-weight-bold text-uppercase"><a style="text-decoration:none" href="/shop/{{shop._id}}">{{# if shop.shopname}}{{shop.shopname}}{{else}}{{shop.fullname}}{{/if}}</a></p>
             </div>
-            <div class="card-body" style="font-size:10px">
+            <div class="card-body" style="font-size:12px">
               <p class="text-uppercase">Country: {{shop.country}}</p>
               <p class="text-uppercase">City: {{shop.city}}</p>
               <p class="text-uppercase">Type: {{shop.shopType}}</p>
@@ -419,7 +630,9 @@
             <div class="card-footer">
               <div class="d-inline-block">
                 <div class="featured-product-thumb">
-                  <img class="w-100 g-height-100" style="object-fit:cover" src="../../uploads/{{shop.profile_image}}" alt="Shop Image"/>
+                  <a href="/shop/{{shop._id}}">
+                    <img class="w-100 g-height-250" style="object-fit:cover" src="../../uploads/{{shop.profile_image}}" alt="Shop Image"/>
+                  </a>
                 </div>
               </div>
             </div>
@@ -428,11 +641,62 @@
       </div>
     </div>
     <!-- Product Details-->
-    <div class="bg-secondary pt-1 pb-4" id="details">
+    <div class="bg-secondary hidden-small-screen pt-1 pb-4" id="details-large">
+      <div class="container py-2">
+        <div class="row">
+          <div class="col-md-4">
+            <p class="font-weight-bold" style="font-size:16px">Features</p>
+            <ul class="list-icon mb-4 pb-2">
+              {{# each product.features}}
+                {{# if this}}
+                  <li>
+                    <i class="fe-icon-check text-success"></i>
+                    {{this}}
+                  </li>
+                {{/if}}
+              {{/each}}
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <p class="font-weight-bold" style="font-size:16px">Specifications</p>
+            <ul class="list-unstyled mb-4 pb-2">
+              {{# each product.specs}}
+                {{# if this}}
+                  <li>
+                    <i class="fe-icon-check text-success"></i>
+                    {{this}}
+                  </li>
+                {{/if}}
+              {{/each}}
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <p class="font-weight-bold" style="font-size:16px">Shipping & Delivery Options</p>
+            <ul class="list-unstyled mb-4 pb-2">
+              {{# each product.shipping}}
+                {{# if this}}
+                  <li>
+                    <i class="fe-icon-check text-success"></i>
+                    {{this}}
+                  </li>
+                {{/if}}
+              {{/each}}
+            </ul>
+          </div>
+
+          <div class="col-lg-12">
+            <p class="font-weight-bold" style="font-size:16px">Description</p>
+            <p class="mb-4 pb-2">{{product.description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-secondary hidden-large-screen pt-1 pb-4" id="details-small">
       <div class="container py-2">
         <div class="row">
           <div class="col-md-6">
-            <p class="font-weight-bold" style="font-size:16px">Description</p>
+            <p class="font-weight-bold" style="font-size:16px">Product Description</p>
             <p class="mb-4 pb-2">{{product.description}}</p>
             <p class="font-weight-bold" style="font-size:16px">Features</p>
             <ul class="list-icon mb-4 pb-2">
@@ -611,7 +875,8 @@
         </div>
       </div>
     </div>
-    <div class="container pt-3 pb-5">
+
+    <div class="container pt-3 pb-5 hidden-small-screen">
       <!-- Related Products Carousel-->
       <p class="font-weight-bold pb-4" style="font-size:18px">Customers who bought this item also like</p>
       <div class="owl-carousel carousel-flush" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true,&quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
@@ -645,10 +910,34 @@
           </div>
         </div>
         {{/each}}
-
       </div>
-
     </div>
+
+    <div class="container pt-3 pb-3 hidden-large-screen">
+      <!-- Related Products Carousel-->
+      <p class="font-weight-bold pb-4" style="font-size:18px">Customers who bought this item also like</p>
+      <div class="owl-carousel carousel-flush" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true,&quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:2},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:2},&quot;991&quot;:{&quot;items&quot;:2},&quot;1200&quot;:{&quot;items&quot;:2}} }">
+        {{# each products}}
+          <!-- Product-->
+        <div class="product-card mx-auto mb-5" style="padding-top:0;padding-bottom:0;">
+          <a class="product-thumb" href="/product/{{this._id}}">
+            <img class="w-100 g-height-150" style="object-fit: cover;" src="../../uploads/{{this.product_image}}" alt="Product Thumbnail"/>
+          </a>
+          <div class="product-card-body">
+            <h5 class="product-title" style="font-size: 12px;text-overflow: ellipsis;overflow:hidden;">
+              <a href="/product/{{this._id}}">{{this.name}}</a></h5>
+              <span class="product-price" style="font-size: 12px">
+                {{# if this.price_cut}}
+                  <del>{{this.currency}}{{this.price_cut}}</del>
+                {{/if}}
+                {{this.currency}}{{this.price}}
+              </span>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
     <!-- Footer-->
     <footer class="bg-dark pt-5">
       <!-- First Row-->

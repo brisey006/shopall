@@ -9,6 +9,8 @@ const Social = require('../models/socials');
 const Order = require('../models/order');
 const Review = require('../models/review');
 const Team = require('../models/team');
+const nodemailer = require('nodemailer');
+const xoauth2 = require('xoauth2');
 
 module.exports = {
   index: async (req, res, next) => {
@@ -376,7 +378,7 @@ module.exports = {
       const product = await Product.findById(productId);
 
       if (!product) {
-        return res.redirect("/");
+        return res.redirect("/page-not-found");
       }
 
       var category = product.category;
@@ -590,7 +592,7 @@ module.exports = {
         a1,a2,a3,
         a4,a5,
         r1,r2,r3,r4,r5,
-        products: related.reverse()
+        products: related.slice((related.length - 5)).reverse()
       })
     } catch (err) {
       next(err)
@@ -643,7 +645,7 @@ module.exports = {
       }
 
       res.render('cart', {
-        products: product.reverse(), 
+        products: product.reverse(),
         totalPrice: cart.totalPrice,
         actualPrice: cart.actualPrice
       })
@@ -689,16 +691,35 @@ module.exports = {
 
   contactUs: async (req, res, next) => {
     try {
-      const {name,subject,message, email} = req.body;
 
-      const contact = new Contact({
-        name: name,
-        subject: subject,
-        message: message,
-        email: email
+      var transporter = nodemailer.createTransport({
+          host: "smtp.gmail.com",
+          port: 465,
+          secure: true,
+          service: 'gmail',
+          auth: {
+          type: "OAuth2",
+          user: 'shopallonlinepvt@gmail.com',
+          clientId: '573108330496-spftgieoki35osq00ghs8klc8791fkha.apps.googleusercontent.com',
+          clientSecret: 'AzrfAjx3Z4QORyOiArsKI7md',
+          refreshToken: '1//047eJFlbPj3_1CgYIARAAGAQSNwF-L9IrqJEzofKc4GsPwWVIkE001yOIPBlWnBGzKZ4Bi85XMnuwgG-yzUE-WRtOHQDJ4-bE8xE'
+        }
+      })
+
+      var mailOptions = {
+          from: req.body.email, // listed in rfc822 message header
+          to: 'shopallonlinepvt@gmail.com', // listed in rfc822 message header
+          subject: `${req.body.name}: ${req.body.subject}`,
+          text: `${req.body.name} with email: ${req.body.email} send a new message.\n\n  ${req.body.message}`
+
+      }
+
+      transporter.sendMail(mailOptions, function (err, res) {
+          if(err){
+              return res.redirect('back');
+          }
       });
 
-      await contact.save();
       res.render('contact-success')
     } catch (err) {
       next(err)

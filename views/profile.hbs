@@ -153,13 +153,25 @@
     <!-- Page Title-->
     <div class="page-title d-flex" aria-label="Page title" style="background-image: url(../../assets/img/page-title/shop-pattern.jpg);">
       <div class="container text-left align-self-center">
-        <h1 class="page-title-heading">
+        <h1 class="page-title-heading" style="font-size:20px">
           {{# if profile.active}}
             Shop Dashboard
             {{else}}
             Profile Dashboard
           {{/if}}
         </h1>
+        {{# if profile.sub}}
+        <div class="custom-control custom-checkbox d-block mb-3">
+          <input class="custom-control-input" type="checkbox" id="subscribe_me" checked disabled>
+          <label class="custom-control-label" for="subscribe_me">Subscribed to Newsletter</label> <span class="badge badge-danger"><a class="text-white" href="/subscribe">unsubscribe</a></span>
+        </div>
+        {{else}}
+        <div class="custom-control custom-checkbox d-block mb-3">
+          <input class="custom-control-input" type="checkbox" id="subscribe_me" checked disabled>
+          <label class="custom-control-label" for="subscribe_me">Subscribe to Newsletter</label> <span class="badge badge-primary"><a class="text-white" href="/subscribe">subscribe</a></span>
+        </div>
+        {{/if}}
+        <a href="/reset-password"><span class="badge badge-primary">Change Password</span></a>
       </div>
     </div>
     <!-- Page Content-->
@@ -197,11 +209,21 @@
               <a class="list-group-item" href="/user/profile-shop">
                 <div class="d-flex justify-content-between align-items-center">
                   <div>
-                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <i class="fe-icon-archive mr-1 text-muted"></i>
                     <div class="d-inline-block font-weight-medium text-uppercase">
                       My Shop
                     </div>
                   </div><span class="badge badge-secondary">{{profile.shop_items.length}}</span>
+                </div>
+              </a>
+              <a class="list-group-item" href="/user/shop-orders">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">
+                      Shop Orders
+                    </div>
+                  </div><span class="badge badge-secondary">{{profile.shop_orders.length}}</span>
                 </div>
               </a>
               <a class="list-group-item" href="/profile-upload-product">
@@ -227,6 +249,17 @@
                       My Wishlist
                     </div>
                   </div><span class="badge badge-secondary">{{profile.wishlist.length}}</span>
+                </div>
+              </a>
+
+              <a class="list-group-item" href="/user/shopall-ledger">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-file mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">
+                      Shopall Ledger
+                    </div>
+                  </div><span class="badge badge-secondary">{{profile.ledger.length}}</span>
                 </div>
               </a>
             </nav>
@@ -338,10 +371,6 @@
             <div class="col-12">
               <hr class="mt-2 mb-3">
               <div class="d-flex flex-wrap justify-content-between align-items-center">
-                <div class="custom-control custom-checkbox d-block">
-                  <input class="custom-control-input" type="checkbox" id="subscribe_me" checked disabled>
-                  <label class="custom-control-label" for="subscribe_me">Subscribe me to Newsletter</label>
-                </div>
                 <button class="btn btn-primary" type="submit">Update Profile</button>
               </div>
             </div>

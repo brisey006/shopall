@@ -25,6 +25,7 @@ const userSchema = new Schema({
   paypal: String,
   ecocash: String,
   onemoney: String,
+  sub: Number,
   is_admin: Number,
   email: {
     type: String,
@@ -51,7 +52,21 @@ const userSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'shop_items'
     }
-  ]
+  ],
+  ledger: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'ledger'
+    }
+  ],
+  shop_orders: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'shop_orders'
+    }
+  ],
+  resetPasswordToken: String,
+  resetPasswordExpires: Date
 });
 
 userSchema.methods.encryptPassword = (password) => {

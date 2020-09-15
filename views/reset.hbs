@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Checkout Ecocash
+    <title>Reset Password
     </title>
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -148,92 +148,56 @@
     <!-- Page Title-->
     <div class="page-title d-flex" aria-label="Page title" style="background-image: url(../../assets/img/page-title/shop-pattern.jpg);">
       <div class="container text-left align-self-center">
-        <h1 class="page-title-heading">Ecocash</h1>
+        <h1 class="page-title-heading">Login</h1>
       </div>
     </div>
     <!-- Page Content-->
-    <div class="container pb-4 mb-2">
+    <div class="container mb-3">
       <div class="row">
-        <div class="col-lg-12 mb-5">
-          <div class="wizard">
-            <div class="wizard-steps d-flex flex-wrap flex-sm-nowrap justify-content-between">
-              <a class="wizard-step" href="/checkout-card/{{product._id}}">
-                Pay With Card
-              </a>
-              <a class="wizard-step" href="/checkout-onemoney/{{product._id}}">
-                Pay With OneMoney
-              </a>
-              <a class="wizard-step active" href="/checkout-ecocash/{{product._id}}">
-                Pay With Ecocash
-              </a>
-              <a class="wizard-step" href="/checkout-other/{{product._id}}">
-                Pay With Other
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- Sidebar-->
-        <aside class="col-xl-3 col-lg-4 pb-4 mb-2">
-          <!-- Promo Banner-->
-          <a class="d-block mb-2">
-            <img class="d-block g-height-280 w-100" style="object-fit:cover" src="../../uploads/{{product.product_image}}" alt="Product Image">
-          </a>
-          <!-- Order Summary-->
-          <div class="widget">
-            <h4 class="widget-title">Order Summary</h4>
-            <div class="d-flex justify-content-between pb-2">
-              <div>Product name:</div>
-              <div class="font-weight-medium">{{product.name}} X {{qty}}</div>
-            </div>
-            <div class="d-flex justify-content-between pb-2">
-              <div>Product subtotal:</div>
-              <div class="font-weight-medium">{{product.currency}}{{subtotal}}</div>
-            </div>
-            <div class="d-flex justify-content-between pb-2">
-              <div>Product Discount:</div>
-              <div class="font-weight-medium">{{discount}}%</div>
-            </div>
-            <hr>
-            <div class="d-flex justify-content-between pb-2">
-              <div class="pt-3">Total Amount :</div>
-              <div class="pt-3 text-right text-lg font-weight-medium">
-                {{product.currency}}{{price}}
+        <div class="col-md-2"></div>
+        <div class="col-md-8 pb-5">
+          <div class="row">
+              <div class="col-sm-12">
+                <div class="mb-3">
+                  {{#if hasErrors}}
+                    <div class="alert alert-danger">
+                      {{# each messages}}
+                        <p>{{this}}</p>
+                      {{/each}}
+                    </div>
+                  {{/if}}
+
+                  {{# if hasSuccess}}
+                  <div class="text-white alert alert-success">
+                    {{# each success}}
+                      <p>{{this}}</p>
+                    {{/each}}
+                  </div>
+                {{/if}}
+                </div>
               </div>
             </div>
-
-          </div>
-        </aside>
-        <!-- Checkout: Payment-->
-        <div class="col-xl-9 col-lg-8 pb-5">
-          <div class="wizard">
-            <div class="wizard-body">
-                <div class="card">
-                  <div class="card-header">
-                    <h6>Pay with Ecocash to {{shop.fullname}}</h6>
-                  </div>
-                <div class="card-body px-3">
-                  <div id="card">
-                    <div class="card-body px-0">
-                      <p>Ecocash Biller Code:&nbsp;&nbsp; <b>{{shop.ecocash}}</b> </p>
-                      <div class="card-wrapper"></div>
-                      <p class="alert alert-danger"> <b>Note: Always save your proof of payments when using Ecocash</b> </p>
-                    </div>
-                  </div>
+          <form class="needs-validation wizard" action="/reset/{{token}}" method="post">
+            <div class="wizard-body pt-2">
+              <h3 class="h5 pt-4 pb-2">Your New Password</h3>
+              <div class="input-group form-group">
+                <div class="input-group-prepend"><span class="input-group-text"><i class="fe-icon-lock"></i></span></div>
+                <input class="form-control" type="password" placeholder="Password" name="password" id="password" required>
+                <div class="invalid-feedback">Please enter valid password!</div>
+              </div>
+              <div class="input-group form-group">
+                <div class="custom-control custom-checkbox mt-4">
+                  <input class="custom-control-input" type="checkbox" onclick="showPassword()" id="show-pd">
+                  <label class="custom-control-label" for="show-pd">Show Password</label>
                 </div>
-                </div>
+              </div>
             </div>
-            <div class="wizard-footer d-flex justify-content-between">
-              <a class="btn btn-secondary my-2" href="/shops">
-                <i class="fe-icon-arrow-left"></i>
-                <span class="d-none d-sm-inline-block">Continue Shopping</span>
-              </a>
-              <a class="btn btn-success my-2" href="/add-to-orders/{{product._id}}">
-                <span class="d-none d-sm-inline-block">Add To Orders</span>
-                <i class="fe-icon-check-circle"></i>
-              </a>
+            <div class="wizard-footer text-right">
+              <button class="btn btn-primary" type="submit">Reset Password</button>
             </div>
-          </div>
+          </form>
         </div>
+        <div class="col-md-2"></div>
       </div>
     </div>
     <!-- Footer-->
@@ -340,8 +304,19 @@
     <!-- Backdrop-->
     <div class="site-backdrop"></div>
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
-    <script src="../../assets/js/card.min.js"></script>
     <script src="../../assets/js/vendor.min.js"></script>
     <script src="../../assets/js/theme.min.js"></script>
+    <script>
+        function showPassword() {
+          var password = document.getElementById("password");
+
+          if (password.type === "password") {
+            password.type = "text";
+          }
+          else {
+            password.type = "password";
+          }
+        }
+      </script>
   </body>
 </html>

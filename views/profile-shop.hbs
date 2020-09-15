@@ -22,6 +22,48 @@
   <!-- Main Theme Styles + Bootstrap-->
   <link rel="stylesheet" media="screen" href="../../assets/css/theme.min.css">
   <link rel="stylesheet" href="../../assets/css/unify-globals.css">
+  <style media="screen">
+      @media screen and (max-width: 479px){
+        .hidden-small-screen{
+          display: none;
+        }
+      }
+
+      @media only screen
+      and (min-device-width : 768px)
+      and (max-device-width : 1024px)
+      and (orientation : landscape) { .hidden-small-screen{
+        display: none;
+      }}
+
+      @media only screen
+      and (min-device-width : 768px)
+      and (max-device-width : 1024px)
+      and (orientation : portrait) { 	.hidden-small-screen{
+          display: none;
+        }}
+
+      @media only screen
+        and (min-device-width: 768px)
+        and (max-device-width: 1024px)
+        and (min-width: 1006)
+        and (max-width: 899px)
+        and (min-width: 768px)
+        and (-webkit-min-device-pixel-ratio: 1) {
+          .hidden-large-screen{
+            display: none;
+          }
+        }
+
+        @media screen
+        and (min-device-width: 1200px)
+        and (max-device-width: 1600px)
+        and (-webkit-min-device-pixel-ratio: 1) {
+          .hidden-large-screen{
+            display: none;
+          }
+      }
+  </style>
   <!-- Google Tag Manager-->
   <script>
     (function(w, d, s, l, i) {
@@ -182,7 +224,7 @@
     <div class="row">
       <!-- Shop Items-->
       {{# each products}}
-        <div class="col-lg-3 col-sm-6 mb-30">
+        <div class="col-lg-3 hidden-small-screen mb-30">
           <div class="product-card mx-auto mb-0" style="padding-top:0;padding-bottom:0">
             <a class="product-thumb" target="_blank" href="/product/{{this._id}}">
               <img class="w-100 g-height-300" style="object-fit:cover" src="../../uploads/{{this.product_image}}" alt="Product Thumbnail" />
@@ -211,21 +253,49 @@
                   </span>
                   <div class="buttons">
                     <div class="row py-3">
-                      <div class="col-lg-6 col-xs-6 pb-3">
-                        {{# if this.stock}}
-                          <a style="text-decoration: none; font-size:12px;" class="badge badge-warning" href="/stock_out/{{this._id}}">Stock Out</a>
-                          {{else}}
-                          <a style="text-decoration: none; font-size:12px;" class="badge badge-success" href="/stock_in/{{this._id}}">Stock In</a>
-                        {{/if}}
-                      </div>
-                      <div class="col-lg-6 col-xs-6 pb-3">
-                        <a style="text-decoration: none; font-size:12px;" class="badge badge-danger" href="/delete_product/{{this._id}}">Delete Product</a>
-                      </div>
                       <div class="col-lg-12 pt-1">
                         <a class="badge badge-primary" style="text-decoration: none; font-size:12px;" href="/edit-product/{{this._id}}">Edit Product</a>
                       </div>
                     </div>
 
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 hidden-large-screen mb-30">
+          <div class="product-card mx-auto mb-0" style="padding-top:0;padding-bottom:0">
+            <a class="product-thumb" target="_blank" href="/product/{{this._id}}">
+              <img class="w-100 g-height-150" style="object-fit:cover" src="../../uploads/{{this.product_image}}" alt="Product Thumbnail" />
+            </a>
+
+            <div class="product-card-body">
+              <h5 style="font-size: 12px" class="product-title">
+                {{this.name}}
+              </h5>
+              {{# if this.stock}}
+                <a class="product-meta" style="color:#33cb81">
+                  In Stock
+                </a>
+                {{else}}
+                <a class="product-meta" style="color:#ff5252">
+                  Out of Stock
+                </a>
+              {{/if}}
+                  <span class="product-price">
+                    {{#if this.price_cut }}
+                      <del>
+                        {{this.currency}}{{this.price_cut}}
+                      </del>
+                    {{/if}}
+                    {{this.currency}}{{this.price}}
+                  </span>
+                  <div class="buttons">
+                    <div class="row py-3">
+                      <div class="col-lg-12 pt-1">
+                        <a class="badge badge-primary" style="text-decoration: none; font-size:12px;" href="/edit-product/{{this._id}}">Edit Product</a>
+                      </div>
+                    </div>
                 </div>
             </div>
           </div>

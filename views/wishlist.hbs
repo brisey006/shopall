@@ -21,6 +21,48 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../../assets/css/theme.min.css">
     <link rel="stylesheet" href="../../assets/css/unify-globals.css">
+    <style media="screen">
+        @media screen and (max-width: 479px){
+          .hidden-small-screen{
+            display: none;
+          }
+        }
+
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : landscape) { .hidden-small-screen{
+          display: none;
+        }}
+
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : portrait) { 	.hidden-small-screen{
+            display: none;
+          }}
+
+        @media only screen
+          and (min-device-width: 768px)
+          and (max-device-width: 1024px)
+          and (min-width: 1006)
+          and (max-width: 899px)
+          and (min-width: 768px)
+          and (-webkit-min-device-pixel-ratio: 1) {
+            .hidden-large-screen{
+              display: none;
+            }
+          }
+
+          @media screen
+          and (min-device-width: 1200px)
+          and (max-device-width: 1600px)
+          and (-webkit-min-device-pixel-ratio: 1) {
+            .hidden-large-screen{
+              display: none;
+            }
+        }
+    </style>
     <!-- Google Tag Manager-->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -153,7 +195,7 @@
     <!-- Page Title-->
     <div class="page-title d-flex" aria-label="Page title" style="background-image: url(../../assets/img/page-title/shop-pattern.jpg);">
       <div class="container text-left align-self-center">
-        <h1 class="page-title-heading">
+        <h1 class="page-title-heading" style="font-size:20px">
           My Wishlist
         </h1>
       </div>
@@ -193,11 +235,21 @@
               <a class="list-group-item" href="/user/profile-shop">
                 <div class="d-flex justify-content-between align-items-center">
                   <div>
-                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <i class="fe-icon-archive mr-1 text-muted"></i>
                     <div class="d-inline-block font-weight-medium text-uppercase">
                       My Shop
                     </div>
                   </div><span class="badge badge-secondary">{{profile.shop_items.length}}</span>
+                </div>
+              </a>
+              <a class="list-group-item" href="/user/shop-orders">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-shopping-bag mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">
+                      Shop Orders
+                    </div>
+                  </div><span class="badge badge-secondary">{{profile.shop_orders.length}}</span>
                 </div>
               </a>
               <a class="list-group-item" href="/profile-upload-product">
@@ -225,6 +277,16 @@
                   </div><span class="badge badge-secondary">{{profile.wishlist.length}}</span>
                 </div>
               </a>
+              <a class="list-group-item" href="/user/shopall-ledger">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="fe-icon-file mr-1 text-muted"></i>
+                    <div class="d-inline-block font-weight-medium text-uppercase">
+                      Shopall Ledger
+                    </div>
+                  </div><span class="badge badge-secondary">{{profile.ledger.length}}</span>
+                </div>
+              </a>
             </nav>
           </div>
         </div>
@@ -232,10 +294,37 @@
         <div class="col-lg-8 pb-5">
           <div class="row">
             {{# each wishlist}}
-            <div class="col-lg-4 col-sm-6 mb-30">
+            <div class="col-lg-4 hidden-small-screen mb-30">
+              <div class="product-card mx-auto mb-3" style="padding-top:0">
+                <a class="product-thumb" href="/product/{{this._id}}">
+                  <img class="w-100 g-height-250" style="object-fit:cover" src="../../uploads/{{this.product_image}}" alt="Product Thumbnail"/></a>
+                <div class="product-card-body">
+                  {{# if this.stock}}
+                    <a class="product-meta" style="color:#33cb81">
+                      In Stock
+                    </a>
+                    {{else}}
+                    <a class="product-meta" style="color:#ff5252">
+                      Out of Stock
+                    </a>
+                  {{/if}}
+                  <span class="product-price">
+                    {{#if this.price_cut }}
+                      <del>
+                        {{this.currency}}{{this.price_cut}}
+                      </del>
+                    {{/if}}
+                    {{this.currency}}{{this.price}}
+                  </span>
+                  <a class="btn btn-danger btn-sm" href="/remove-wishlist/{{this._id}}">Remove</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 hidden-large-screen mb-30">
               <div class="product-card mx-auto mb-3" style="padding-top:0">
                 <a class="product-thumb" href="/product/{{this.product}}">
-                  <img class="w-100 g-height-250" style="object-fit:cover" src="../../uploads/{{this.image}}" alt="Product Thumbnail"/></a>
+                  <img class="w-100 g-height-150" style="object-fit:cover" src="../../uploads/{{this.image}}" alt="Product Thumbnail"/></a>
                 <div class="product-card-body">
                   {{# if this.stock}}
                     <a class="product-meta" style="color:#33cb81">

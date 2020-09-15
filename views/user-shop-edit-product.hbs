@@ -146,14 +146,44 @@
         </div>
       </div>
     </header>
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete Product</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete this Product Permanently
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="/delete_product/{{product._id}}">Proceed</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Page Title-->
     <div class="page-title d-flex" aria-label="Page title" style="background-image: url(../../assets/img/page-title/shop-pattern.jpg);">
       <div class="container text-left align-self-center">
-        <h1 class="page-title-heading">
+        <h1 class="h4">
           Update {{product.name}}
         </h1>
         <h4 class="badge badge-warning">Picture Edit Not Yet Available</h4>
         <h4><a class="badge badge-success" style="text-decoration: none;" href="/user/profile-shop">Go Back to Shop</a></h4>
+        <h3><a class="badge badge-danger" style="text-decoration: none;" href="#" data-toggle="modal" data-target="#deleteProduct">Delete Product</a></h3>
+        <h3>
+          {{# if product.stock}}
+            <a style="text-decoration: none; font-size:12px;" class="badge badge-warning" href="/stock_out/{{product._id}}">Mark Stock Out</a>
+            {{else}}
+            <a style="text-decoration: none; font-size:12px;" class="badge badge-success" href="/stock_in/{{product._id}}">Mark Stock In</a>
+          {{/if}}
+        </h3>
       </div>
     </div>
     <!-- Page Content-->
@@ -251,19 +281,19 @@
             <div class="col-md-12">
               <div class="form-group">
                 <label for="Specifications">Product Specifications (optional)</label>
-                <textarea class="form-control" type="text" id="specs" name="specs" placeholder="e.g #spec1 #spec2" rows="5"></textarea>
+                <textarea class="form-control" type="text" id="specs" name="specs" placeholder="e.g #spec1 #spec2" rows="5">{{# each product.specs}}{{# if this}}#{{this}}{{/if}}{{/each}}</textarea>
               </div>
             </div>
             <div class="col-md-12">
               <div class="form-group">
                 <label for="Features">Product Features (optional)</label>
-                <textarea class="form-control" type="text" id="features" name="features" placeholder="e.g #feature1 #feature2" rows="5"></textarea>
+                <textarea class="form-control" type="text" id="features" name="features" placeholder="e.g #feature1 #feature2" rows="5">{{# each product.features}}{{# if this}}#{{this}}{{/if}}{{/each}}</textarea>
               </div>
             </div>
             <div class="col-md-12">
               <div class="form-group">
                 <label for="Shipping">Product Shipping & Delivery Options (optional)</label>
-                <textarea class="form-control" type="text" id="shipping" name="shipping" placeholder="e.g #opt1 #opt2" rows="5"></textarea>
+                <textarea class="form-control" type="text" id="shipping" name="shipping" placeholder="e.g #opt1 #opt2" rows="5">{{# each product.shipping}}{{# if this}}#{{this}}{{/if}}{{/each}}</textarea>
               </div>
             </div>
             <div class="col-md-12">

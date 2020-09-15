@@ -130,6 +130,13 @@
 							</li>
 
 							<li class="u-sidebar-nav-menu__item">
+								<a class="u-sidebar-nav-menu__link" href="/shopall/control/admin-orders">
+									<i class="fa fa-cubes u-sidebar-nav-menu__item-icon"></i>
+									<span class="u-sidebar-nav-menu__item-title">Shopall Orders</span>
+								</a>
+							</li>
+
+							<li class="u-sidebar-nav-menu__item">
 								<a class="u-sidebar-nav-menu__link" href="/shopall/control/admin-shops">
 									<i class="fa fa-cubes u-sidebar-nav-menu__item-icon"></i>
 									<span class="u-sidebar-nav-menu__item-title">Shopall Shops</span>
@@ -257,6 +264,7 @@
 
 			<div class="u-content">
 				<div class="u-body">
+					{{# if user.is_admin}}
 					<h1 class="h2 font-weight-semibold mb-4">Shopall Users</h1>
 
 					<div class="card mb-4">
@@ -302,6 +310,9 @@
 							</div>
 						</div>
 					</div>
+					{{else}}
+					<h3>You're not an Admin</h3>
+					{{/if}}
 				</div>
 
 				<!-- Footer -->

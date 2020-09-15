@@ -16,6 +16,48 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../../assets/css/theme.min.css">
     <link rel="stylesheet" href="../../assets/css/unify-globals.css">
+    <style media="screen">
+        @media screen and (max-width: 479px){
+          .hidden-small-screen{
+            display: none;
+          }
+        }
+
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : landscape) { .hidden-small-screen{
+          display: none;
+        }}
+
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : portrait) { 	.hidden-small-screen{
+            display: none;
+          }}
+
+        @media only screen
+          and (min-device-width: 768px)
+          and (max-device-width: 1024px)
+          and (min-width: 1006)
+          and (max-width: 899px)
+          and (min-width: 768px)
+          and (-webkit-min-device-pixel-ratio: 1) {
+            .hidden-large-screen{
+              display: none;
+            }
+          }
+
+          @media screen
+          and (min-device-width: 1200px)
+          and (max-device-width: 1600px)
+          and (-webkit-min-device-pixel-ratio: 1) {
+            .hidden-large-screen{
+              display: none;
+            }
+        }
+    </style>
     <!-- Google Tag Manager-->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -152,7 +194,7 @@
           <div class="col-lg-7 col-md-8 col-sm-11">
             <div class="wizard">
               <div class="wizard-body">
-                <h1 class="h3 text-center pb-2">Search Shops</h1>
+                <h1 class="h4 text-center pb-2">Search Shops</h1>
                 <form class="input-group mb-2" method="post" action="/search-shops">
                   <div class="input-group-prepend">
                     <div class="input-group-text bg-primary text-white"><i class="fe-icon-search"></i></div>
@@ -175,21 +217,37 @@
             {{# each shops}}
             {{# if this.is_shop}}
               {{# if this.active}}
-              <div class="col-lg-3 col-md-4 col-xs-6 col-sm-6 mb-3">
-                <div class="widget widget-featured-products">
-                  <a class="featured-product" href="/shop/{{this._id}}">
-                    <div class="featured-product-thumb">
-                      <img class="w-100 g-height-50" style="object-fit:cover" src="../../uploads/{{this.profile_image}}" alt="Shop Image"/>
-                    </div>
-                    <div class="featured-product-info">
-                      <h5 class="featured-product-title">{{# if this.shopname}}{{this.shopname}}{{else}}{{this.fullname}}{{/if}}</h5>
-                      <span class="featured-product-price">
+                <div class="col-lg-3 col-md-4 hidden-small-screen mb-30">
+                  <div class="product-card mx-auto mb-3" style="padding-top:0;padding-bottom:0;">
+                    <a class="product-thumb" href="/shop/{{this._id}}">
+                      <img id="recon" class="w-100 g-height-250" style="object-fit: cover;" {{# if this.profile_image}} src="../../uploads/{{this.profile_image}}" {{else}} src="../../assets/shop.jpg" {{/if}} alt="Shop Thumbnail"/>
+                    </a>
+                    <div class="product-card-body">
+                      <h5 style="font-size: 12px;overflow: hidden" class="product-title">
+                        <a href="/shop/{{this._id}}">{{# if this.shopname}}{{this.shopname}}{{else}}{{this.fullname}}{{/if}}</a>
+                      </h5>
+                      <span class="product-price">
                         {{this.shopType}}
                       </span>
                     </div>
-                  </a>
+                  </div>
                 </div>
-              </div>
+
+                <div class="col-6 hidden-large-screen mb-30">
+                  <div class="product-card mx-auto mb-3" style="padding-top:0;padding-bottom:0;">
+                    <a class="product-thumb" href="/shop/{{this._id}}">
+                      <img id="recon" class="w-100 g-height-150" style="object-fit: cover;" src="../../uploads/{{this.profile_image}}" alt="Shop Thumbnail"/>
+                    </a>
+                    <div class="product-card-body">
+                      <h5 style="font-size: 11px;overflow: hidden" class="product-title">
+                        <a href="/shop/{{this._id}}">{{# if this.shopname}}{{this.shopname}}{{else}}{{this.fullname}}{{/if}}</a>
+                      </h5>
+                      <span style="font-size: 10px;" class="product-price">
+                        {{this.shopType}}
+                      </span>
+                    </div>
+                  </div>
+                </div>
               {{/if}}
               {{/if}}
             {{/each}}

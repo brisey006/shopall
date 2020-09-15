@@ -15,6 +15,20 @@ const Controller = require('../controllers/controllers');
 router.route('/')
   .get(ShopController.index)
 
+router.route('/reset-password')
+  .get(UserController.getReset)
+  .post(UserController.resetPassword)
+
+router.route('/reset/:token')
+  .get(UserController.reset)
+  .post(UserController.resetDone)
+
+router.route('/subscribe')
+  .get(isLoggedIn, Controller.subscribeNewsletter)
+
+router.route('/form/subscription')
+  .post(Controller.subscribeNewsletterGuest)
+
 router.route('/search-results')
   .get(ExtraController.getSearch)
   .post(ExtraController.searchProducts)
@@ -35,6 +49,12 @@ router.route('/categories')
 
 
 /*Shop Product*/
+router.route('/order/:id')
+  .get(UserController.getOrder)
+
+router.route('/ledger-order/:id')
+  .get(UserController.getLedgerOrder)
+
 router.route('/shop/:id')
   .get(ShopController.getShop)
 
@@ -58,14 +78,17 @@ router.route('/add-to-cart/:id')
 router.route('/add-to-wishlist/:id')
   .get(isLoggedIn, UserController.addToWishlist)
 
-router.route('/add-to-orders/:id')
-  .get(isLoggedIn, UserController.addToOrders)
-
 router.route('/cancel/:id')
   .get(isLoggedIn, UserController.cancelOrder)
 
 router.route('/deliver/:id')
   .get(isLoggedIn, UserController.deliverOrder)
+
+router.route('/deliver-shop/:id')
+  .get(isLoggedIn, UserController.deliverShopOrder)
+
+router.route('/deliver-order/:id')
+  .get(isLoggedIn, UserController.deliverAdminOrder)
 
 router.route('/in_progress/:id')
   .get(isLoggedIn, UserController.activeOrder)
@@ -113,15 +136,19 @@ router.route('/delete-project/:id')
 /*Shop Checkout */
 router.route('/checkout-card/:id')
   .get(isLoggedIn,CheckoutController.getCheckoutCard)
+  .post(isLoggedIn, CheckoutController.checkoutShopall)
 
-router.route('/checkout-onemoney/:id')
-  .get(isLoggedIn,CheckoutController.getCheckoutOneMoney)
+router.route('/checkout-gateways/:id')
+  .get(isLoggedIn,CheckoutController.getCheckoutGateway)
+  .post(isLoggedIn, CheckoutController.checkoutShopall)
 
-router.route('/checkout-ecocash/:id')
-  .get(isLoggedIn,CheckoutController.getCheckoutEcocash)
+router.route('/checkout-mobile/:id')
+  .get(isLoggedIn,CheckoutController.getCheckoutMobile)
+  .post(isLoggedIn, CheckoutController.checkoutShopall)
 
 router.route('/checkout-other/:id')
   .get(isLoggedIn,CheckoutController.getCheckoutOther)
+  .post(isLoggedIn, CheckoutController.checkoutShopall)
 
 /*End Checkout*/
 
@@ -149,9 +176,6 @@ router.route('/shopall/advertising')
 
 router.route('/page-not-found')
   .get(ExtraController.get404)
-
-router.route('/form/subscription')
-  .post(ExtraController.addSub)
 
 router.route('/terms_and_conditions')
   .get(ExtraController.getTerms)
@@ -184,6 +208,9 @@ router.route('/shopall/control/shopall-admin-password-recovery')
 
 router.route('/shopall/control/admin-dashboard')
   .get(isLoggedIn,AdminController.getAdmin)
+
+router.route('/shopall/control/admin-orders')
+  .get(isLoggedIn,AdminController.getAdminOrders)
 
 router.route('/shopall/control/admin-shops')
   .get(isLoggedIn,AdminController.getAdminShops)
@@ -306,6 +333,9 @@ router.route("/update/profile")
 /*End Settings*/
 
 /*Category Controller*/
+router.route('/categories/clothing')
+  .get(CategoryController.getClothing)
+  .post(CategoryController.clothingSearch)
 
 router.route('/categories/women_clothing')
   .get(CategoryController.getC1)

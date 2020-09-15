@@ -11,11 +11,126 @@ const Order = require('../models/order');
 const Review = require('../models/review');
 const Blog = require('../models/blog');
 const Career = require('../models/career');
-const Wishlist = require('../models/wishlist');
 const Team = require('../models/team');
+const nodemailer = require('nodemailer');
+const xoauth2 = require('xoauth2');
 const fs = require('fs');
 
 module.exports = {
+  subscribeNewsletter: async (req, res, next) => {
+    try {
+      const userId = req.session.passport.user;
+      const user = await User.findById(userId);
+
+      if (user.sub == 1) {
+        var transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true,
+            service: 'gmail',
+            auth: {
+            type: "OAuth2",
+            user: 'shopallonlinepvt@gmail.com',
+            clientId: '573108330496-spftgieoki35osq00ghs8klc8791fkha.apps.googleusercontent.com',
+            clientSecret: 'AzrfAjx3Z4QORyOiArsKI7md',
+            refreshToken: '1//047eJFlbPj3_1CgYIARAAGAQSNwF-L9IrqJEzofKc4GsPwWVIkE001yOIPBlWnBGzKZ4Bi85XMnuwgG-yzUE-WRtOHQDJ4-bE8xE'
+          }
+        })
+
+        var mailOptions = {
+            from: user.email, // listed in rfc822 message header
+            to: 'shopallonlinepvt@gmail.com', // listed in rfc822 message header
+            subject: `${user.fullname} Unsubscribed for Newsletters`,
+            text: `${user.fullname}, Email address: ${user.email} wishes to unsubcribe for Shopall Newsletters`,
+        }
+
+        transporter.sendMail(mailOptions, function (err, res) {
+            if(err){
+                return res.render('sub-failure');
+            }
+        });
+
+        user.sub = 0;
+        await user.save();
+
+        res.render('unsub-success');
+      }
+
+      else {
+        var transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true,
+            service: 'gmail',
+            auth: {
+            type: "OAuth2",
+            user: 'shopallonlinepvt@gmail.com',
+            clientId: '573108330496-spftgieoki35osq00ghs8klc8791fkha.apps.googleusercontent.com',
+            clientSecret: 'AzrfAjx3Z4QORyOiArsKI7md',
+            refreshToken: '1//047eJFlbPj3_1CgYIARAAGAQSNwF-L9IrqJEzofKc4GsPwWVIkE001yOIPBlWnBGzKZ4Bi85XMnuwgG-yzUE-WRtOHQDJ4-bE8xE'
+          }
+        })
+
+        var mailOptions = {
+            from: user.email, // listed in rfc822 message header
+            to: 'shopallonlinepvt@gmail.com', // listed in rfc822 message header
+            subject: `${user.fullname} Subscribed for Newsletters`,
+            text: `${user.fullname}, Email address: ${user.email} has subcribed for Shopall Newsletters`,
+        }
+
+        transporter.sendMail(mailOptions, function (err, res) {
+            if(err){
+                return res.render('sub-failure');
+            }
+        });
+
+        user.sub = 1;
+        await user.save();
+
+        res.render('sub-success');
+      }
+
+    } catch (err) {
+      next(err)
+    }
+  },
+
+  subscribeNewsletterGuest: async (req, res, next) => {
+    try {
+
+        var transporter = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true,
+            service: 'gmail',
+            auth: {
+            type: "OAuth2",
+            user: 'shopallonlinepvt@gmail.com',
+            clientId: '573108330496-spftgieoki35osq00ghs8klc8791fkha.apps.googleusercontent.com',
+            clientSecret: 'AzrfAjx3Z4QORyOiArsKI7md',
+            refreshToken: '1//047eJFlbPj3_1CgYIARAAGAQSNwF-L9IrqJEzofKc4GsPwWVIkE001yOIPBlWnBGzKZ4Bi85XMnuwgG-yzUE-WRtOHQDJ4-bE8xE'
+          }
+        })
+
+        var mailOptions = {
+            from: req.body.email, // listed in rfc822 message header
+            to: 'shopallonlinepvt@gmail.com', // listed in rfc822 message header
+            subject: `${req.body.email} Subscribed for Newsletters`,
+            text: `Email address: ${req.body.email} has subcribed for Shopall Newsletters`,
+        }
+
+        transporter.sendMail(mailOptions, function (err, res) {
+            if(err){
+                return res.render('sub-failure');
+            }
+        });
+
+      res.render('sub-success');
+
+    } catch (err) {
+      next(err)
+    }
+  },
 
   stockOut: async (req, res, next) => {
     try {
@@ -326,7 +441,7 @@ module.exports = {
    deleteWishlist: async (req, res, next) => {
      try {
        const wishlistId = req.params.id;
-       const wishlist = await Wishlist.findById(wishlistId);
+       const wishlist = await Product.findById(wishlistId);
 
        const userId = req.session.passport.user;
        const user = await User.findById(userId);
@@ -339,8 +454,6 @@ module.exports = {
            await user.save();
          }
        }
-
-       await Wishlist.findByIdAndDelete(wishlistId);
 
        res.redirect('back')
      } catch (err) {
@@ -372,17 +485,9 @@ module.exports = {
 
        const {features,specs,shipping, discount, price,category,name,condition, price_cut, description, product_video} = req.body;
 
-       if (features != "") {
-         product.features = features.split('#');
-       }
-
-       if (specs != "") {
-         product.specs = req.body.specs.split('#');
-       }
-
-       if (shipping != "") {
-         product.shipping = req.body.shipping.split('#');
-       }
+       product.features = features.split('#');
+       product.specs = req.body.specs.split('#');
+       product.shipping = req.body.shipping.split('#');
 
        product.discount = discount;
        product.price = price;

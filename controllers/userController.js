@@ -3,9 +3,13 @@ const User = require('../models/user');
 const Order = require('../models/order');
 const Cart = require('../models/cart');
 const Product = require('../models/product');
-const Wishlist = require('../models/wishlist');
+const csrf = require('csurf');
 const passport = require('passport');
 const fs = require('fs');
+const async = require('async');
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
+const xoauth2 = require('xoauth2');
 
 module.exports = {
   /*Profile Dashboard*/
@@ -13,6 +17,7 @@ module.exports = {
     try {
       const userId = req.session.passport.user;
       const user = await User.findById(userId);
+
       res.render('profile', {profile: user});
     } catch (err) {
       next(err)
@@ -104,6 +109,27 @@ module.exports = {
 
 /*End Shop*/
 /*Profile Orders*/
+  getShopOrders: async (req, res, next) => {
+    try {
+      const userId = req.session.passport.user;
+      const user = await User.findById(userId);
+
+      const productsIds = user.shop_orders;
+      const products = [];
+      for (var i = 0; i < productsIds.length; i++) {
+        const product = await Order.findById(productsIds[i]);
+        products.push(product);
+      }
+
+      res.render('orders-shop', {
+        profile: user,
+        orders: products.reverse()
+      });
+    } catch (err) {
+      next(err)
+    }
+  },
+
   getProfileOrders: async (req, res, next) => {
     try {
       const userId = req.session.passport.user;
@@ -125,55 +151,59 @@ module.exports = {
     }
   },
 
-  addToOrders: async (req, res, next) => {
+  getOrder: async (req, res, next) => {
+    try {
+      const orderId = req.params.id;
+      const order = await Order.findById(orderId);
+
+      const shop = await User.findById(order.shop);
+      const buyer = await User.findById(order.user);
+
+      const product = await Product.findById(order.product)
+
+      res.render('order', {
+        shop: shop,
+        product: product,
+        buyer: buyer,
+        order: order
+      });
+    } catch (err) {
+      next(err)
+    }
+  },
+
+  getLedgerOrder: async (req, res, next) => {
+    try {
+      const orderId = req.params.id;
+      const order = await Order.findById(orderId);
+
+      const shop = await User.findById(order.shop);
+      const buyer = await User.findById(order.user);
+
+      const product = await Product.findById(order.product)
+
+      res.render('order-ledger', {
+        shop: shop,
+        product: product,
+        buyer: buyer,
+        order: order
+      });
+    } catch (err) {
+      next(err)
+    }
+  },
+
+  getLedger: async (req, res, next) => {
     try {
       const userId = req.session.passport.user;
       const user = await User.findById(userId);
-      const productId = req.params.id;
-      const product = await Product.findById(productId);
 
-      var cart = new Cart(req.session.cart);
-      const products = cart.generateArray();
+      const orders = await Order.find({});
 
-      var prod;
-      for (var i = 0; i < products.length; i++) {
-        if (products[i].item._id == productId) {
-          prod = products[i];
-        }
-      }
-
-      var pcnt = product.discount;
-      if (!product.discount) {
-        pcnt = 0;
-      }
-
-      var subtotal = prod.qty * product.price;
-      var discount = (pcnt * subtotal) / 100;
-      var price = subtotal - discount;
-
-      const date = Date.now();
-      const created_at = new Date(date).toDateString();
-
-      var num = Math.random().toExponential().split('e-');
-      var num2 = num[0].split('.');
-      var order_num = num2[1];
-
-      const order = new Order({
-        order_number: order_num,
-        product_id: product._id,
-        canceled: 0,
-        delivered: 0,
-        in_progress: 1,
-        currency: product.currency,
-        price: price,
-        date: created_at
+      res.render('ledger', {
+        profile: user,
+        orders: orders.reverse()
       });
-
-      await order.save();
-      user.orders.push(order);
-      await user.save();
-
-      res.redirect('/user/profile-orders')
     } catch (err) {
       next(err)
     }
@@ -184,11 +214,20 @@ module.exports = {
       const orderId = req.params.id;
       const order = await Order.findById(orderId);
 
-      order.canceled = 1;
-      order.delivered = 0;
-      order.in_progress = 0;
+      if (order.admin_delivered == 1) {
+        return res.redirect('back');
+      }
 
-      order.save();
+      else {
+        order.canceled = 1;
+        order.delivered = 0;
+        order.in_progress = 0;
+        order.admin_delivered = 0;
+        order.shop_delivered = 0;
+
+        order.save();
+      }
+
       res.redirect('back')
     } catch (err) {
       next(err)
@@ -200,11 +239,65 @@ module.exports = {
       const orderId = req.params.id;
       const order = await Order.findById(orderId);
 
-      order.canceled = 0;
-      order.delivered = 1;
-      order.in_progress = 0;
+      if (order.canceled == 1) {
+        return res.redirect('back');
+      }
 
-      order.save();
+      else {
+        order.canceled = 0;
+        order.delivered = 1;
+        order.admin_delivered = 1;
+        order.shop_delivered = 1;
+        order.in_progress = 0;
+
+        order.save();
+      }
+
+      res.redirect('back')
+    } catch (err) {
+      next(err)
+    }
+  },
+
+  deliverShopOrder: async (req, res, next) => {
+    try {
+      const orderId = req.params.id;
+      const order = await Order.findById(orderId);
+
+      if (order.canceled == 1) {
+        return res.redirect('back');
+      }
+      else {
+        order.canceled = 0;
+        order.shop_delivered = 1;
+
+        order.save();
+      }
+
+      res.redirect('back')
+    } catch (err) {
+      next(err)
+    }
+  },
+
+  deliverAdminOrder: async (req, res, next) => {
+    try {
+      const orderId = req.params.id;
+      const order = await Order.findById(orderId);
+
+      if (order.canceled == 1) {
+        return res.redirect('back');
+      }
+      else {
+        order.canceled = 0;
+        order.delivered = 1;
+        order.shop_delivered = 1;
+        order.admin_delivered = 1;
+        order.in_progress = 0;
+
+        order.save();
+      }
+
       res.redirect('back')
     } catch (err) {
       next(err)
@@ -216,11 +309,17 @@ module.exports = {
       const orderId = req.params.id;
       const order = await Order.findById(orderId);
 
-      order.canceled = 0;
-      order.delivered = 0;
-      order.in_progress = 1;
+      if (order.admin_delivered == 1) {
+        return res.redirect('back');
+      }
+      else {
+        order.canceled = 0;
+        order.delivered = 0;
+        order.in_progress = 1;
 
-      order.save();
+        order.save();
+      }
+
       res.redirect('back')
     } catch (err) {
       next(err)
@@ -299,28 +398,18 @@ getProfileWishlist: async (req, res, next) => {
 
     const productsIds = user.wishlist;
     const products = [];
+
     for (var i = 0; i < productsIds.length; i++) {
-      const product = await Wishlist.findById(productsIds[i]);
-      products.push(product);
-    }
-
-    var wishlist = [];
-    for (var i = 0; i < products.length; i++) {
-      var og = await Product.findById(products[i].product);
-      products[i].stock = og.stock;
-      if (products[i].stock == 0) {
-        products[i].stock = null;
+      const product = await Product.findById(productsIds[i]);
+      if (product) {
+        products.push(product);
       }
-
-      products[i].price = og.price;
-      products[i].price_cut = og.price_cut;
-
-      wishlist.push(products[i]);
     }
+
 
     res.render('wishlist', {
       profile: user,
-      wishlist: wishlist.reverse()
+      wishlist: products.reverse()
     });
   } catch (err) {
     next(err)
@@ -335,18 +424,15 @@ addToWishlist: async (req, res, next) => {
     const productId = req.params.id;
     const product = await Product.findById(productId);
 
-    const wishlist = new Wishlist({
-      name: product.name,
-      stock: product.stock,
-      currency: product.currency,
-      product: product._id,
-      image: product.product_image,
-      price: product.price,
-      price_cut: product.price_cut
-    });
+    var arr = user.wishlist;
 
-    await wishlist.save();
-    user.wishlist.push(wishlist);
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] == productId) {
+          return res.redirect('/user/profile-wishlist');
+        }
+      }
+
+    user.wishlist.push(productId);
     await user.save();
 
     res.redirect('/user/profile-wishlist')
@@ -357,5 +443,166 @@ addToWishlist: async (req, res, next) => {
 
 /*End Wishlist*/
 
+/*Password Reset*/
+getReset: async (req, res, next) => {
+    try {
+      const userId = req.session.passport.user;
+      const user = await User.findById(userId);
+
+      var messages = req.flash('error');
+      var info = req.flash('info');
+      res.render('forgot',{
+        info: info,
+        hasInfo: info.length>0,
+        messages: messages,
+        hasErrors: messages.length>0
+      });
+    } catch (err) {
+      next(err)
+    }
+  },
+
+  resetPassword: async (req, res, next) => {
+    try {
+      async.waterfall([
+        function(done) {
+          crypto.randomBytes(20, function(err, buf) {
+            var token = buf.toString('hex');
+            done(err, token);
+          });
+        },
+        function(token, done) {
+          User.findOne({ email: req.body.email }, function(err, user) {
+            if (!user) {
+              req.flash('error', 'No account with that email address exists.');
+              return res.redirect('/reset-password');
+            }
+
+            user.resetPasswordToken = token;
+            user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+
+            user.save(function(err) {
+              done(err, token, user);
+            });
+          });
+        },
+
+        function(token, user, done) {
+          var smtpTransport = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true,
+            service: 'gmail',
+            auth: {
+            type: "OAuth2",
+            user: 'shopallonlinepvt@gmail.com',
+            clientId: '573108330496-spftgieoki35osq00ghs8klc8791fkha.apps.googleusercontent.com',
+            clientSecret: 'AzrfAjx3Z4QORyOiArsKI7md',
+            refreshToken: '1//047eJFlbPj3_1CgYIARAAGAQSNwF-L9IrqJEzofKc4GsPwWVIkE001yOIPBlWnBGzKZ4Bi85XMnuwgG-yzUE-WRtOHQDJ4-bE8xE'
+          }
+          });
+          var mailOptions = {
+            to: user.email,
+            from: 'shopallonlinepvt@gmail.com',
+            subject: 'Shopall Password Reset',
+            text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+              'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+              'http://' + req.headers.host + '/reset/' + token + '\n\n' +
+              'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+          };
+          smtpTransport.sendMail(mailOptions, function(err) {
+            req.flash('info', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+            done(err, 'done');
+          });
+        }
+      ], function(err) {
+        if (err) return next(err);
+         res.redirect('/reset-password');
+      });
+
+    } catch (err) {
+      next(err)
+    }
+  },
+
+  reset: async (req, res, next) => {
+    try {
+      User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+        if (!user) {
+          req.flash('error', 'Password reset token is invalid or has expired.');
+          return res.redirect('/forgot');
+        }
+
+        var messages = req.flash('error');
+        var success = req.flash('success');
+
+        res.render('reset', {
+          token: req.params.token,
+          user: req.user,
+          success: success,
+          hasSuccess: success.length>0,
+          messages: messages,
+          hasErrors: messages.length>0
+        });
+      });
+    } catch (err) {
+      next(err)
+    }
+  },
+
+  resetDone: async (req, res, next) => {
+    try {
+      async.waterfall([
+        function(done) {
+          User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+            if (!user) {
+              req.flash('error', 'Password reset token is invalid or has expired.');
+              return res.redirect('back');
+            }
+
+            user.password = user.encryptPassword(req.body.password);
+            user.resetPasswordToken = undefined;
+            user.resetPasswordExpires = undefined;
+
+            user.save(function(err) {
+              req.logIn(user, function(err) {
+                done(err, user);
+              });
+            });
+          });
+        },
+        function(user, done) {
+          var smtpTransport = nodemailer.createTransport({
+            host: "smtp.gmail.com",
+            port: 465,
+            secure: true,
+            service: 'gmail',
+            auth: {
+            type: "OAuth2",
+            user: 'shopallonlinepvt@gmail.com',
+            clientId: '573108330496-spftgieoki35osq00ghs8klc8791fkha.apps.googleusercontent.com',
+            clientSecret: 'AzrfAjx3Z4QORyOiArsKI7md',
+            refreshToken: '1//047eJFlbPj3_1CgYIARAAGAQSNwF-L9IrqJEzofKc4GsPwWVIkE001yOIPBlWnBGzKZ4Bi85XMnuwgG-yzUE-WRtOHQDJ4-bE8xE'
+          }
+          });
+          var mailOptions = {
+            to: user.email,
+            from: 'shopallonlinepvt@gmail.com',
+            subject: 'Your password has been changed',
+            text: `Hello, ${user.fullname} \n\n` +
+              'This is a confirmation that the password for your account ' + user.email + ' on shopall.co.zw has just been changed.\n'
+          };
+          smtpTransport.sendMail(mailOptions, function(err) {
+            req.flash('success', 'Success! Your password has been changed.');
+            done(err);
+          });
+        }
+      ], function(err) {
+        res.redirect('/user/profile');
+      });
+    } catch (err) {
+      next(err)
+    }
+  }
 
 }

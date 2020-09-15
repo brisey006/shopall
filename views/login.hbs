@@ -174,12 +174,12 @@
               <h3 class="h5 pt-4 pb-2">Login to your Account</h3>
               <div class="input-group form-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="fe-icon-mail"></i></span></div>
-                <input class="form-control" type="email" placeholder="Email" name="email">
+                <input class="form-control" type="email" placeholder="Email" name="email" required>
                 <div class="invalid-feedback">Please enter your email!</div>
               </div>
               <div class="input-group form-group">
                 <div class="input-group-prepend"><span class="input-group-text"><i class="fe-icon-lock"></i></span></div>
-                <input class="form-control" type="password" placeholder="Password" name="password">
+                <input class="form-control" type="password" placeholder="Password" name="password" required>
                 <div class="invalid-feedback">Please enter valid password!</div>
               </div>
               <input type="hidden" name="_csrf" value="{{csrfToken}}">
@@ -188,7 +188,7 @@
                   <input class="custom-control-input" type="checkbox" checked id="remember-me">
                   <label class="custom-control-label" for="remember-me">Remember me</label>
                 </div>
-                <a class="navi-link" href="/contact">
+                <a class="navi-link" href="/reset-password">
                   Forgot password?
                 </a>
               </div>

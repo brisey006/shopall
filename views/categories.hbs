@@ -16,6 +16,48 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../../assets/css/theme.min.css">
     <link rel="stylesheet" href="../../assets/css/unify-globals.css">
+    <style media="screen">
+        @media screen and (max-width: 479px){
+          .hidden-small-screen{
+            display: none;
+          }
+        }
+
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : landscape) { .hidden-small-screen{
+          display: none;
+        }}
+
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : portrait) { 	.hidden-small-screen{
+            display: none;
+          }}
+
+        @media only screen
+          and (min-device-width: 768px)
+          and (max-device-width: 1024px)
+          and (min-width: 1006)
+          and (max-width: 899px)
+          and (min-width: 768px)
+          and (-webkit-min-device-pixel-ratio: 1) {
+            .hidden-large-screen{
+              display: none;
+            }
+          }
+
+          @media screen
+          and (min-device-width: 1200px)
+          and (max-device-width: 1600px)
+          and (-webkit-min-device-pixel-ratio: 1) {
+            .hidden-large-screen{
+              display: none;
+            }
+        }
+    </style>
     <!-- Google Tag Manager-->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -155,14 +197,15 @@
     <div class="container pb-4 mb-1">
       <div class="row">
         <div class="col-lg-12">
+
           <!-- Categories Grid-->
-          <div class="row pt-3">
+          <div class="row hidden-small-screen pt-3">
             <!-- Category-->
             <div class="col-lg-4 col-sm-6 mb-4">
               <a class="product-category-card" href="/categories/women_clothing">
                 <div class="product-category-card-thumb">
-                  <div class="main-img">
-                    <img src="../../assets/img/shop/categories/product-9.jpg" style="object-fit:cover" alt="Shop Category"/>
+                  <div class="main-img" style="height:300px">
+                    <img src="../../assets/img/shop/categories/product-9.jpg" style="object-fit:cover;width:100%;height:100%;" alt="Shop Category"/>
                   </div>
                   <div class="thumblist">
                     <img src="../../assets/img/shop/categories/product/product-27.jpg" alt="Shop Category"/>
@@ -696,6 +739,869 @@
               </a>
             </div>
           </div>
+
+          <div class="row hidden-large-screen pt-3">
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Women's Clothing</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/women_clothing">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/63.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/women_clothing" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Men's Clothing</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/men_clothing">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/man.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/men_clothing" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Boys' Clothing</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/boys_clothing">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/now/21.jpeg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/boys_clothing" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Girls' Clothing</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/girls_clothing">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/now/girl.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/girls_clothing" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Baby Products</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/baby_products">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/now/12.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/baby_products" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:10px">Computers & Accessories</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/computers_and_accessories">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/monitor.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/computers_and_accessories" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Food & Groceries</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/food_and_groceries">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/gro.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/food_and_groceries" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Tv, Video & Audio</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/tv_audio_video">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/07.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/tv_audio_video" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Smartphones & Tablets</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/smartphones_and_tablets">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/06.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/smartphones_and_tablets" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Cameras, Photo & Video</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/cameras_photo_video">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/10.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/cameras_photo_video" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Headphones</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/headphones">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/14.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/headphones" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Electronics</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/electronics">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/17.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/electronics" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Video Games</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/video_games">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/game.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/video_games" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Toys & Games</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/toys_and_games">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/40.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/toys_and_games" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:10px">Beauty & Personal Care</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/beauty_and_personal_care">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/59.jpeg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/beauty_and_personal_care" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Books</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/books">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/6.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/books" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Stationary</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/stationary">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/51.png"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/stationary" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:10px">Furniture & Homewares</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/furniture_and_homewares">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/49.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/furniture_and_homewares" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Industrial & Scientific</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/industrial_and_scientific">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/now/16.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/industrial_and_scientific" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Alcohol</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/alcohol">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/43.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/alcohol" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Health & Household</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/health_and_household">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/37.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/health_and_household" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Tools & Garden</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/tools_and_garden">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/44.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/tools_and_garden" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Sports & Outdoor</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/sports_and_outdoor">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/38.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/sports_and_outdoor" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Media House</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/media_house">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/53.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/media_house" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Farming</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/farming">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/56.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/farming" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Software</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/software">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/now/30.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/software" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Bags & Luggage</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/bags_and_luggage">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/now/20.png"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/bags_and_luggage" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Shoes</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/shoes">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/product/23.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/shoes" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Jewellery</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/jewellery">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/31.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/jewellery" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Arts & Crafts</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/arts_and_crafts">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/now/2.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/arts_and_crafts" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Services</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/services">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/now/4.png"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/services" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-210">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:12px">Home & Kitchen</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/home_and_kitchen">
+                        <div class="cover" style="height: 150px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/now/17.jpg"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/home_and_kitchen" class="font-weight-bold " style="font-size:13px;text-decoration:none">Expore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 mb-4">
+              <div class="product-category-card">
+                <div class="product-category-card-thumb g-height-400">
+                  <div class="row px-2">
+                    <div class="col-lg-12">
+                      <div class="product-category-card-header">
+                        <p class="text-left font-weight-bold" style="font-size:20px">Other Collections</p>
+                        <p class="text-left font-weight-bold text-underline" style="font-size:13px">Explore more from other departments</p>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <a href="/categories/other">
+                        <div class="cover divcenter" style="height: 285px">
+                            <img style="object-fit:cover;height:100%;width:100%;" src="../../assets/img/shop/categories/now/o3.png"/>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="product-category-card text-left">
+                        <a href="/categories/other" class="font-weight-bold " style="font-size:13px;text-decoration:none">Explore More</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </div>
     </div>

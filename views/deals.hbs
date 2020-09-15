@@ -16,6 +16,48 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../../assets/css/theme.min.css">
     <link rel="stylesheet" href="../../assets/css/unify-globals.css">
+    <style media="screen">
+        @media screen and (max-width: 479px){
+          .hidden-small-screen{
+            display: none;
+          }
+        }
+
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : landscape) { .hidden-small-screen{
+          display: none;
+        }}
+
+        @media only screen
+        and (min-device-width : 768px)
+        and (max-device-width : 1024px)
+        and (orientation : portrait) { 	.hidden-small-screen{
+            display: none;
+          }}
+
+        @media only screen
+          and (min-device-width: 768px)
+          and (max-device-width: 1024px)
+          and (min-width: 1006)
+          and (max-width: 899px)
+          and (min-width: 768px)
+          and (-webkit-min-device-pixel-ratio: 1) {
+            .hidden-large-screen{
+              display: none;
+            }
+          }
+
+          @media screen
+          and (min-device-width: 1200px)
+          and (max-device-width: 1600px)
+          and (-webkit-min-device-pixel-ratio: 1) {
+            .hidden-large-screen{
+              display: none;
+            }
+        }
+    </style>
     <!-- Google Tag Manager-->
     <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -156,7 +198,7 @@
       <div class="row">
         <div class="col-lg-12">
           <!-- Categories Grid-->
-          <div class="row pt-3">
+          <div class="row pt-3 hidden-small-screen">
             {{# each deals}}
             <div class="col-xl-3 col-lg-3 col-md-4 mb-30">
               <div class="bg-secondary position-relative">
@@ -172,6 +214,24 @@
             </div>
             {{/each}}
           </div>
+
+          <div class="row pt-3 hidden-large-screen">
+            {{# each deals}}
+            <div class="col-6 mb-30">
+              <div class="bg-secondary position-relative">
+                <div class="text-center pt-1">
+                  <p class="mb-2 pb-1 font-weight-bold">{{this.name}} <span class="font-weight-bold">|</span> {{# if this.price_cut}}<del class="text-muted">{{this.currency}}{{this.price_cut}}</del>{{/if}}&nbsp;{{this.currency}}{{this.price}}
+                  <a href="/product/{{this._id}}"></p>
+                    <img class="g-height-150 mb-1" src="../../uploads/{{this.product_image}}" style="object-fit:cover"/>
+                  </a>
+                  <p style="font-size:12px" class="countdown countdown-style-4" data-date-time="{{this.countdown}}" data-labels="{&quot;label-day&quot;: &quot;Days&quot;, &quot;label-hour&quot;: &quot;Hours&quot;, &quot;label-minute&quot;: &quot;Mins&quot;, &quot;label-second&quot;: &quot;Secs&quot;}">
+                  </p>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+
         </div>
       </div>
     </div>
